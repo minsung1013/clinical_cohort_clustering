@@ -1,0 +1,11 @@
+B (standard therapy),demand_breadth,sponsors,bigpharma,phase_weight,n_phase3,enroll_sum,tme_rel%,biomarker%,value_score
+temozolomide,27,27,3,47.8,5,4131,33,56,0.9615746267851958
+bevacizumab,4,4,1,9.2,2,277,75,50,0.20491723703545522
+cemiplimab,3,3,1,6.2,1,202,100,0,0.1583487433924239
+nivolumab,2,2,1,6.0,2,480,100,0,0.1454290320571992
+cyclophosphamide,3,1,0,3.6,0,108,100,67,0.12099058862482669
+fluorouracil,4,4,0,5.8,0,205,25,25,0.11484050245784004
+cisplatin,3,3,0,6.2,1,164,0,67,0.09560200907044292
+irinotecan,2,2,1,3.2,0,275,0,0,0.07990623971973305
+pembrolizumab,2,2,0,4.6,1,40,100,0,0.0687165752430573
+doxorubicin,2,1,0,3.2,0,20,0,0,0.0

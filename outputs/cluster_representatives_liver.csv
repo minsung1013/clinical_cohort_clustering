@@ -1,0 +1,10 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,17,Hoffmann-La Roche,atezolizumab;bevacizumab,PD-L1,Phase 2,NCT04524871,"Chugai Pharmaceutical, Qilu Pharmaceutical Co., Ltd., AstraZeneca, AbbVie, Akeso, Suzhou Zelgen Biopharmaceuticals Co.,Ltd, Biotheus Inc., Suzhou Suncadia Biopharmaceuticals Co., Ltd. …"
+1,15,Eli Lilly and Company,cisplatin;gemcitabine,-,Phase 2,NCT02711553,"Fujifilm Pharmaceuticals U.S.A., Inc., 3D Medicines (Sichuan) Co., Ltd., AstraZeneca, Jazz Pharmaceuticals, Suzhou Suncadia Biopharmaceuticals Co., Ltd., Akeso, Suzhou Zelgen Biopharmaceuticals Co.,Ltd, Shanghai Guangsheng Biopharmaceutical Co., Ltd …"
+2,6,TCR2 Therapeutics,cyclophosphamide,-,Phase 2,NCT03907852,"BioEclipse Therapeutics, Seagen, a wholly owned subsidiary of Pfizer, Nammi Therapeutics Inc, Beijing Biotech"
+3,7,Merck Sharp & Dohme LLC,pembrolizumab,PD-L1,Phase 2,NCT02628067,"ImmunoVaccine Technologies, Inc. (IMV Inc.), Geneos Therapeutics, Qurient Co., Ltd., TiumBio Co., Ltd., Sichuan Baili Pharmaceutical Co., Ltd."
+4,9,AbbVie,lenvatinib,-,Phase 1,NCT06858813,"Eisai Inc., CStone Pharmaceuticals, Akeso, Sichuan Baili Pharmaceutical Co., Ltd., CatalYm GmbH, CSPC ZhongQi Pharmaceutical Technology Co., Ltd."
+5,6,AstraZeneca,sorafenib,-,Phase 3,NCT03298451,"Exelixis, Chia Tai Tianqing Pharmaceutical Group Co., Ltd., Hoffmann-La Roche, AbbVie, Zhejiang Haichang Biotech Co., Ltd."
+6,7,"TransThera Sciences (Nanjing), Inc. (빅파마 없음·최근접)",FOLFOXIRI;capecitabine,PD-L1,Phase 3,NCT07328919,"Bold Therapeutics, Inc., InnoPharmax Inc., Sichuan Baili Pharmaceutical Co., Ltd., Shenzhen Xinhe Biomedical"
+7,7,Exelixis,abiraterone;atezolizumab;cabozantinib;enzalutamide;nivolumab,-,Phase 3,NCT07620574,"Teclison Ltd., Nanobiotix, TaiRx, Inc., 7 Hills Pharma, LLC, Shanghai Henlius Biotech, Zhejiang Haichang Biotech Co., Ltd."
+8,21,AstraZeneca,durvalumab;tremelimumab,-,Phase 3,NCT05557838,"Hoffmann-La Roche, Regeneron Pharmaceuticals, NeoTX Therapeutics Ltd., Seagen, a wholly owned subsidiary of Pfizer, Gilead Sciences, Boston Scientific Corporation, Compass Therapeutics, Taiho Oncology, Inc. …"

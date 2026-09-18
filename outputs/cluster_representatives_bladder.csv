@@ -1,0 +1,8 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,14,Merck Sharp & Dohme LLC,docetaxel;paclitaxel,-,Phase 3,NCT07419295,"Theralase® Technologies Inc., Fidia Farmaceutici s.p.a., Gilead Sciences, Compass Therapeutics, Hoffmann-La Roche, Nammi Therapeutics Inc, Sichuan Baili Pharmaceutical Co., Ltd., Jiangsu Hansoh Pharmaceutical Co., Ltd. …"
+1,18,AstraZeneca,carboplatin;cisplatin;gemcitabine,PD-L1,Phase 3,NCT02516241,"Bristol-Myers Squibb, BeiGene, Astellas Pharma Global Development, Inc., Merck Sharp & Dohme LLC, Janssen Research & Development, LLC, RemeGen Co., Ltd., Seagen, a wholly owned subsidiary of Pfizer, BicycleTx Limited …"
+2,4,"Janssen Research & Development, LLC",erdafitinib,PD-L1,Phase 2,NCT02365597,Janssen Pharmaceutical K.K.
+3,6,"Astellas Pharma Global Development, Inc.",enfortumab vedotin;pembrolizumab,PD-L1,Phase 2,NCT07475806,"Merck Sharp & Dohme LLC, CSPC Megalith Biopharmaceutical Co.,Ltd., Generate Biomedicines, AstraZeneca, Summit Therapeutics"
+4,8,"ImmunoVaccine Technologies, Inc. (IMV Inc.)",pembrolizumab,PD-L1,Phase 2,NCT03836352,"Nanobiotix, USWM CT, LLC, Medicenna Therapeutics, Inc., Merck Sharp & Dohme LLC, Eli Lilly and Company"
+5,4,AstraZeneca,durvalumab,-,Phase 2,NCT03459846,NeoTX Therapeutics Ltd.
+6,8,"Janssen Research & Development, LLC",gemcitabine,FGFR,Phase 3,NCT06319820,"Relmada Therapeutics, Inc., Shanghai Hengrui Pharmaceutical Co., Ltd."

@@ -1,0 +1,10 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,5,TCR2 Therapeutics,cyclophosphamide,-,Phase 2,NCT03907852,"BioEclipse Therapeutics, Beijing Biotech, Zelluna Immunotherapy AS"
+1,16,AstraZeneca,carboplatin;paclitaxel,-,Phase 2,NCT01081951,"Imunon, CanariaBio Inc., Merck Sharp & Dohme LLC, AbbVie, Aston Sci. Inc., Suzhou Suncadia Biopharmaceuticals Co., Ltd., Nanjing Leads Biolabs Co.,Ltd, Genmab …"
+2,6,"ImmunoVaccine Technologies, Inc. (IMV Inc.)",pembrolizumab,PD-L1,Phase 2,NCT03836352,"USWM CT, LLC, ENB Therapeutics, Inc, Medicenna Therapeutics, Inc., TILT Biotherapeutics Ltd., OncoC4, Inc."
+3,10,AstraZeneca,olaparib,BRCA/HRD,Phase 3,NCT01844986,"AGO Research GmbH, Boryung Pharmaceutical Co., Ltd, Hangzhou SynRx Therapeutics Biomedical Technology Co., Ltd, Daewoong Pharmaceutical Co. LTD."
+4,22,Genmab,doxorubicin;gemcitabine;liposomal doxorubicin;paclitaxel;topotecan,"BRCA/HRD, platinum_status",Phase 3,NCT06619236,"AGO Research GmbH, Genelux Corporation, InxMed (Shanghai) Co., Ltd., Verastem, Inc., Suzhou Suncadia Biopharmaceuticals Co., Ltd., ImmunityBio, Inc., Jiangsu Alphamab Biopharmaceuticals Co., Ltd, Jiangsu HengRui Medicine Co., Ltd. …"
+5,8,"Chipscreen Biosciences, Ltd. (빅파마 없음·최근접)",paclitaxel,"platinum_status, PD-L1",Phase 3,NCT04921527,"Corcept Therapeutics, Light Chain Bioscience - Novimmune SA, Shanghai Jiaolian Drug Research and Development Co., Ltd, Sunshine Guojian Pharmaceutical (Shanghai) Co., Ltd., BioMimetix JV, LLC, Jina Pharmaceuticals Inc."
+6,12,AbbVie,bevacizumab,-,Phase 3,NCT05445778,"Daiichi Sankyo, Merck Sharp & Dohme LLC, Genmab, Onconic Therapeutics Inc., GlaxoSmithKline, Suzhou Suncadia Biopharmaceuticals Co., Ltd., Incyte Corporation, BeOne Medicines"
+7,3,"Jiangsu Hansoh Pharmaceutical Co., Ltd. (빅파마 없음·최근접)",s-1,BRCA/HRD,Phase 1,NCT05740956,"Volastra Therapeutics, Inc., TwoStep Therapeutics, Inc."
+8,8,GlaxoSmithKline,niraparib,-,Phase 2,NCT04641247,"Hoffmann-La Roche, pharmaand GmbH, Tesaro, Inc., NeoTX Therapeutics Ltd., CanariaBio Inc., Nammi Therapeutics Inc, K-Group, Beta, Inc., a wholly owned subsidiary of Zentalis Pharmaceuticals, Inc"

@@ -141,39 +141,42 @@ md("""## 2-B. 레지멘 수준 데이터 (별도 표시)
 
 code("""REG_SET = {"FOLFOX","FOLFIRI","FOLFOXIRI","FOLFIRINOX","CAPOX","CAPIRI",
            "FLOT","SOX","FP","XP","ECF","ECX","TPF"}
-ADD_MAP = {"bevacizumab":"anti-VEGF","fruquintinib":"anti-VEGF","regorafenib":"anti-VEGF","ramucirumab":"anti-VEGF",
-           "cetuximab":"anti-EGFR","panitumumab":"anti-EGFR",
-           "pembrolizumab":"IO","nivolumab":"IO","dostarlimab":"IO","atezolizumab":"IO","durvalumab":"IO",
-           "ipilimumab":"IO","tislelizumab":"IO","sintilimab":"IO",
-           "trastuzumab":"HER2","trastuzumab deruxtecan":"HER2","pertuzumab":"HER2",
-           "zolbetuximab":"CLDN18.2"}
+# non-chemo class priority for naming the backbone of a targeted/IO cohort
+PREF = ["IO","EGFR_TKI","ALK/ROS1_TKI","KRAS_G12Ci","MET_TKI","RET_TKI","HER2","CLDN18.2",
+        "CDK4/6","endocrine","AR_targeted","PARP","VEGFR_TKI","anti_VEGF","anti_EGFR",
+        "mTOR","SSTR","FGFR_TKI","ADC","BRAF_MEK","radioligand"]
 b_lists = df.B_soc.apply(lambda s:[x for x in s.split(";") if x])
 def backbone(l):
-    r=[x for x in l if x in REG_SET]
+    s=set(l); r=[x for x in l if x in REG_SET]
     if r: return r[0]
-    s=set(l)
-    if {"fluorouracil","leucovorin"} <= s: return "5FU/LV doublet"
-    if s & {"carboplatin","cisplatin"}: return "platinum doublet"
+    if {"fluorouracil","leucovorin"} <= s: return "5FU/LV"
+    if s & {"carboplatin","cisplatin"}: return "platinum"
     if "s-1" in s: return "S-1"
+    if "gemcitabine" in s: return "gemcitabine"
     if "capecitabine" in s: return "capecitabine"
     if "trifluridine/tipiracil" in s: return "TAS-102"
+    if "temozolomide" in s: return "temozolomide"
+    if "doxorubicin" in s: return "doxorubicin"
+    cls=[c for c in soc_classes(l) if c not in ("chemo","SoC_generic")]
+    for p in PREF:
+        if p in cls: return p
+    if cls: return sorted(cls)[0]
     if "standard_of_care" in s: return "SoC (generic)"
-    if len(s) == 1: return next(iter(s))   # single targeted/IO agent (e.g. osimertinib)
+    if len(s)==1: return next(iter(s))
     return "other"
-def addition(l):
-    a=sorted({ADD_MAP[x] for x in l if x in ADD_MAP})
-    return " + ".join(a) if a else "backbone only"
+def addition(l, bb):
+    adds=sorted(c for c in soc_classes(l) if c not in ("chemo","SoC_generic") and c!=bb)
+    return " + ".join(adds) if adds else "—"
 df["regimen"] = b_lists.apply(backbone)
-df["regimen_add"] = b_lists.apply(addition)
+df["regimen_add"] = df.apply(lambda r:[x for x in r.B_soc.split(";") if x], axis=1).apply(lambda l: addition(l, backbone(l)))
 
-fig, ax = plt.subplots(1, 2, figsize=(14, 4.6))
-df.regimen.value_counts().plot.bar(ax=ax[0], color="#4C78A8"); ax[0].set_title("Chemo backbone (regimen)"); ax[0].set_ylabel("# cohorts"); ax[0].tick_params(axis="x", rotation=30)
-ct = pd.crosstab(df.regimen, df.regimen_add)
-ct.loc[df.regimen.value_counts().index].plot.bar(stacked=True, ax=ax[1], colormap="tab20"); ax[1].set_title("Regimen × added targeted/IO agent"); ax[1].tick_params(axis="x", rotation=30)
+fig, ax = plt.subplots(1, 2, figsize=(14, 4.8))
+df.regimen.value_counts().head(15).plot.bar(ax=ax[0], color="#4C78A8"); ax[0].set_title("Backbone (regimen / class)"); ax[0].set_ylabel("# cohorts"); ax[0].tick_params(axis="x", rotation=40)
+df.soc_class.value_counts().head(15).plot.bar(ax=ax[1], color="#72B7B2"); ax[1].set_title("SoC class combination"); ax[1].tick_params(axis="x", rotation=40)
 plt.tight_layout(); plt.show()
 
-print("레지멘 × 추가약물 교차표:")
-print(ct.to_string())""")
+print("Backbone × 추가 표적/IO 계열 (상위):")
+print(pd.crosstab(df.regimen, df.regimen_add).head(20).to_string())""")
 
 md("## 3. 차원축소 & 군집화 — 치료구성 cosine 공간에서 KMeans (silhouette로 k 선택)")
 

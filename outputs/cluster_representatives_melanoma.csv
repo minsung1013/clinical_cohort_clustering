@@ -1,0 +1,9 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,27,Merck Sharp & Dohme LLC,pembrolizumab,PD-L1,Phase 2,NCT02332668,"Ascentage Pharma Group Inc., ModernaTX, Inc., ENB Therapeutics, Inc, Pfizer, Medicenna Therapeutics, Inc., Rapa Therapeutics LLC, IO Biotech, Evaxion Biotech A/S …"
+1,10,Bristol-Myers Squibb,nivolumab,-,Phase 3,NCT03470922,"HUYABIO International, LLC., Amgen, Biocad, 7 Hills Pharma, LLC, Replimune, Inc., mAbxience Research S.L., Shanghai Henlius Biotech, Scancell Ltd"
+2,4,"Vyriad, Inc.",cemiplimab,"BRAF, PD-L1",Phase 2,NCT04291105,"OncoResponse, Inc., Regeneron Pharmaceuticals"
+3,6,"Shanghai Kechow Pharma, Inc. (빅파마 없음·최근접)",carboplatin;cisplatin;dacarbazine;paclitaxel;temozolomide,NRAS,Phase 3,NCT06008106,"Xynomic Pharmaceuticals, Inc., Erasca, Inc., Shanghai Juncell Therapeutics, Immatics US, Inc., Suzhou BlueHorse Therapeutics Co., Ltd."
+4,3,TILT Biotherapeutics Ltd. (빅파마 없음·최근접),cyclophosphamide,-,Phase 1,NCT06961786,"Valo Therapeutics Oy, Beijing Biotech"
+5,8,Bristol-Myers Squibb,nivolumab;relatlimab,-,Phase 3,NCT05625399,"Nanobiotix, USWM CT, LLC, IDEAYA Biosciences, Immunocore Ltd, Regeneron Pharmaceuticals, Replimune, Inc., Linnaeus Therapeutics, Inc."
+6,2,"Asher Biotherapeutics, Inc.",fluorouracil,-,Phase 1,NCT05653882,BioEclipse Therapeutics
+7,6,Hoffmann-La Roche,entrectinib,-,Phase 2,NCT02568267,"NeoTX Therapeutics Ltd., Pierre Fabre Medicament, GlaxoSmithKline, Hanmi Pharmaceutical Company Limited, IDEAYA Biosciences"

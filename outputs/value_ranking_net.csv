@@ -1,0 +1,8 @@
+B (standard therapy),demand_breadth,sponsors,bigpharma,phase_weight,n_phase3,enroll_sum,tme_rel%,biomarker%,value_score
+octreotide,5,5,1,15.0,5,1326,0,80,0.8732518133853553
+etoposide,4,2,2,8.6,2,913,100,25,0.6198042053299215
+everolimus,4,3,0,12.0,4,1219,0,100,0.5580579439690085
+carboplatin,3,2,1,7.6,2,848,100,33,0.39842925249856254
+pembrolizumab,2,1,2,3.2,0,1768,100,0,0.23999999990211418
+lanreotide,2,2,0,6.0,2,670,0,100,0.13210562239663265
+FOLFIRI,2,2,0,4.6,1,271,100,50,0.1179237288022272

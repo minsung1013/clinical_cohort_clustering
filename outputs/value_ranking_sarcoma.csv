@@ -1,0 +1,5 @@
+B (standard therapy),demand_breadth,sponsors,bigpharma,phase_weight,n_phase3,enroll_sum,tme_rel%,biomarker%,value_score
+temozolomide,3,3,2,4.2,0,194,0,67,0.7767850013964248
+sunitinib,3,2,0,9.0,3,989,0,0,0.6499999994871919
+irinotecan,2,2,2,3.2,0,174,0,50,0.1423880596411584
+dacarbazine,2,2,0,4.6,1,423,50,0,0.1171261194833704

@@ -45,7 +45,7 @@ def _build_fig(dfp, hexcol):
     dfp = dfp.assign(msize=np.interp(np.sqrt(scale), [smin, smax], [7, 40]))
     def _reg_disp(r):
         add = str(r.get("regimen_add", "") or "")
-        return str(r.get("regimen", "—")) + (" + " + add if add and add != "chemo only" else "")
+        return str(r.get("regimen", "—")) + (" + " + add if add and add not in ("chemo only", "—", "backbone only") else "")
 
     fig = go.Figure()
     for ph, a in PHASE_ALPHA.items():
