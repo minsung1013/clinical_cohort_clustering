@@ -1,0 +1,10 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,38,Cardiff Oncology,FOLFIRI;FOLFOX;bevacizumab,MSI-H/dMMR,Phase 2,NCT06106308,"Bristol-Myers Squibb, MedImmune LLC, BioEclipse Therapeutics, Bold Therapeutics, Inc., Mirati Therapeutics Inc., Celyad Oncology SA, Merck Sharp & Dohme LLC, Seagen, a wholly owned subsidiary of Pfizer …"
+1,10,Merck Sharp & Dohme LLC,pembrolizumab,MSI-H/dMMR,Phase 2,NCT02628067,"Medicenna Therapeutics, Inc., Pfizer, Valo Therapeutics Oy, TiumBio Co., Ltd., CuraCell TX AB, Solstice Oncology, Inc., Vividion Therapeutics, Inc."
+2,17,AbbVie,bevacizumab,"MSI-H/dMMR, BRAF_mut",Phase 2,NCT06107413,"Seattle Project Corporation, BeiGene, Shanghai Kechow Pharma, Inc., Ono Pharmaceutical Co., Ltd., Delcath Systems Inc., Hansoh BioMedical R&D Company, BioNTech SE, Pfizer …"
+3,15,"Seagen, a wholly owned subsidiary of Pfizer",trastuzumab;tucatinib,HER2,Phase 2,NCT04430738,"NeoTX Therapeutics Ltd., AstraZeneca, Pfizer, Exelixis, Jiangsu Hansoh Pharmaceutical Co., Ltd., Enliven Therapeutics, 7 Hills Pharma, LLC, Akeso …"
+4,4,Bayer,cetuximab,-,Phase 1,NCT07535112,"Allist Pharmaceuticals, Inc., Taizhou Mabtech Pharmaceutical Co.,Ltd, Haisco Pharmaceutical Group Co., Ltd."
+5,10,GlaxoSmithKline,CAPOX,"MSI-H/dMMR, MSS/pMMR",Phase 2,NCT06567782,"Chia Tai Tianqing Pharmaceutical Group Co., Ltd., Hoffmann-La Roche, BeyondBio Inc., Xynomic Pharmaceuticals, Inc., Suzhou Suncadia Biopharmaceuticals Co., Ltd., Akamis Bio, Qilu Pharmaceutical Co., Ltd., Chia Tai Tianqing Pharmaceutical Group Nanjing Shunxin Pharmaceutical Co., Ltd."
+6,5,AbbVie,standard_of_care,-,Phase 2,NCT07023289,"Agenus Inc., Taizhou Hanzhong biomedical co. LTD, Brenus Pharma, Innovent Biologics (Suzhou) Co. Ltd."
+7,3,GlaxoSmithKline,dostarlimab,MSI-H/dMMR,Phase 2,NCT05723562,-
+8,6,"Chipscreen Biosciences, Ltd. (빅파마 없음·최근접)",fruquintinib,MSS/pMMR,Phase 3,NCT06497985,"Criterium, Inc., Kahr Bio Australia Pty Ltd, Shanghai JMT-Bio Inc., Hangzhou Zhongmei Huadong Pharmaceutical Co., Ltd., Sichuan Baili Pharmaceutical Co., Ltd."
