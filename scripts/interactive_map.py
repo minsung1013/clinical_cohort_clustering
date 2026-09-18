@@ -126,7 +126,7 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
 
     comp = (dfp.groupby("lead_sponsor")
             .agg(scale=("sponsor_scale", "max"), n=("nct_id", "count"), big=("is_big_pharma", "max"))
-            .reset_index().sort_values(["scale", "n"], ascending=False))
+            .reset_index().sort_values("lead_sponsor", key=lambda s: s.str.lower()))
     companies = [{"name": r.lead_sponsor, "scale": int(r.scale), "n": int(r.n), "big": int(r.big)}
                  for _, r in comp.iterrows() if pd.notna(r.lead_sponsor)]
 
