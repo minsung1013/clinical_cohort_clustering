@@ -35,6 +35,11 @@ SYNONYMS = {
     "tegafur/gimeracil/oteracil potassium": "s-1", "teysuno": "s-1",
     "herceptin": "trastuzumab", "cyramza": "ramucirumab", "enhertu": "trastuzumab deruxtecan",
     "vyloy": "zolbetuximab",
+    # lung
+    "abraxane": "nab-paclitaxel", "nab paclitaxel": "nab-paclitaxel",
+    "protein-bound paclitaxel": "nab-paclitaxel", "nab-paclitaxel (abraxane)": "nab-paclitaxel",
+    "tagrisso": "osimertinib", "tarceva": "erlotinib", "iressa": "gefitinib",
+    "alecensa": "alectinib", "xalkori": "crizotinib", "lumakras": "sotorasib", "krazati": "adagrasib",
 }
 
 # ── established standard-of-care agents (recognized comparators/backbones) ────
@@ -58,7 +63,16 @@ STANDARD_OF_CARE = {
     # CLDN18.2 (gastric)
     "zolbetuximab",
     # BRAF / MEK
-    "encorafenib", "binimetinib",
+    "encorafenib", "binimetinib", "dabrafenib", "trametinib",
+    # lung chemo / IO
+    "nab-paclitaxel", "etoposide", "vinorelbine", "cemiplimab", "tremelimumab",
+    # lung targeted TKIs (standard comparators in biomarker-selected NSCLC)
+    "osimertinib", "gefitinib", "erlotinib", "afatinib", "dacomitinib",
+    "alectinib", "crizotinib", "brigatinib", "lorlatinib", "ceritinib", "ensartinib",
+    "entrectinib", "repotrectinib",
+    "sotorasib", "adagrasib",
+    "capmatinib", "tepotinib", "savolitinib",
+    "selpercatinib", "pralsetinib",
 }
 
 # standard-of-care therapeutic classes (for interpretable, treatment-centered clusters)
@@ -67,6 +81,7 @@ SOC_CLASS = {
         "fluorouracil", "capecitabine", "oxaliplatin", "irinotecan", "leucovorin",
         "trifluridine/tipiracil", "gemcitabine", "cisplatin", "carboplatin",
         "paclitaxel", "docetaxel", "pemetrexed", "mitomycin", "s-1", "epirubicin",
+        "nab-paclitaxel", "etoposide", "vinorelbine",
         # regimen-level tokens (kept atomic, not decomposed)
         "FOLFOX", "FOLFIRI", "FOLFOXIRI", "FOLFIRINOX", "CAPOX", "CAPIRI",
         "FLOT", "SOX", "FP", "XP", "ECF", "ECX",
@@ -74,10 +89,17 @@ SOC_CLASS = {
     "anti_VEGF": {"bevacizumab", "aflibercept", "ramucirumab", "fruquintinib", "regorafenib"},
     "anti_EGFR": {"cetuximab", "panitumumab"},
     "IO": {"pembrolizumab", "nivolumab", "ipilimumab", "dostarlimab", "atezolizumab",
-           "durvalumab", "tislelizumab", "sintilimab"},
+           "durvalumab", "tislelizumab", "sintilimab", "cemiplimab", "tremelimumab"},
     "HER2": {"trastuzumab", "pertuzumab", "tucatinib", "trastuzumab deruxtecan", "lapatinib"},
     "CLDN18.2": {"zolbetuximab"},
-    "BRAF_MEK": {"encorafenib", "binimetinib"},
+    # lung biomarker-targeted TKI classes
+    "EGFR_TKI": {"osimertinib", "gefitinib", "erlotinib", "afatinib", "dacomitinib"},
+    "ALK/ROS1_TKI": {"alectinib", "crizotinib", "brigatinib", "lorlatinib", "ceritinib",
+                     "ensartinib", "entrectinib", "repotrectinib"},
+    "KRAS_G12Ci": {"sotorasib", "adagrasib"},
+    "MET_TKI": {"capmatinib", "tepotinib", "savolitinib"},
+    "RET_TKI": {"selpercatinib", "pralsetinib"},
+    "BRAF_MEK": {"encorafenib", "binimetinib", "dabrafenib", "trametinib"},
     "SoC_generic": {"standard_of_care"},  # comparator named as a category, not a specific drug
 }
 

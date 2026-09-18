@@ -36,6 +36,18 @@ CONFIGS = {
             "EBV": r"epstein[\s-]?barr|\bebv\b",
         },
     },
+    "Lung": {
+        "slug": "lung",
+        "title": "폐암(Lung)",
+        "biomarkers": {
+            "EGFR_mut": r"egfr[\s-]*(mut|exon\s*19|exon\s*20|l858r|del\b|del19|t790m|activating|sensiti)|exon\s*19\s*del|l858r|t790m",
+            "ALK": r"\balk\b[\s-]*(positive|rearrang|fusion|translocation|\+)|anaplastic lymphoma kinase",
+            "ROS1": r"\bros1\b",
+            "KRAS_G12C": r"kras\s*g12c",
+            "MET": r"met\s*exon\s*14|metex14|\bmet\b[\s-]*(amplif|exon|skipping)",
+            "PD-L1": r"pd[\s-]?l1|\btps\b|tumou?r proportion score",
+        },
+    },
 }
 
 

@@ -151,15 +151,18 @@ b_lists = df.B_soc.apply(lambda s:[x for x in s.split(";") if x])
 def backbone(l):
     r=[x for x in l if x in REG_SET]
     if r: return r[0]
-    if {"fluorouracil","leucovorin"} <= set(l): return "5FU/LV doublet"
-    if "s-1" in l: return "S-1"
-    if "capecitabine" in l: return "capecitabine"
-    if "trifluridine/tipiracil" in l: return "TAS-102"
-    if "standard_of_care" in l: return "SoC (generic)"
+    s=set(l)
+    if {"fluorouracil","leucovorin"} <= s: return "5FU/LV doublet"
+    if s & {"carboplatin","cisplatin"}: return "platinum doublet"
+    if "s-1" in s: return "S-1"
+    if "capecitabine" in s: return "capecitabine"
+    if "trifluridine/tipiracil" in s: return "TAS-102"
+    if "standard_of_care" in s: return "SoC (generic)"
+    if len(s) == 1: return next(iter(s))   # single targeted/IO agent (e.g. osimertinib)
     return "other"
 def addition(l):
     a=sorted({ADD_MAP[x] for x in l if x in ADD_MAP})
-    return " + ".join(a) if a else "chemo only"
+    return " + ".join(a) if a else "backbone only"
 df["regimen"] = b_lists.apply(backbone)
 df["regimen_add"] = b_lists.apply(addition)
 
