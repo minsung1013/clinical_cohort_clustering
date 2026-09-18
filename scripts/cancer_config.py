@@ -36,6 +36,16 @@ CONFIGS = {
             "EBV": r"epstein[\s-]?barr|\bebv\b",
         },
     },
+    "Head & Neck": {
+        "slug": "hnc",
+        "title": "두경부암(Head & Neck)",
+        "biomarkers": {
+            "PD-L1_CPS": r"pd[\s-]?l1|\bcps\b|combined positive score",
+            "HPV_p16": r"\bhpv\b|human papilloma|\bp16\b",
+            "EGFR": r"\begfr\b|epidermal growth factor",
+            "MSI-H/dMMR": r"\bmsi[\s-]?h\b|microsatellite instab|\bdmmr\b|mismatch repair defic",
+        },
+    },
     "Lung": {
         "slug": "lung",
         "title": "폐암(Lung)",

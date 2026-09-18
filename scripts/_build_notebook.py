@@ -140,7 +140,7 @@ md("""## 2-B. 레지멘 수준 데이터 (별도 표시)
 조합해 분포를 본다.""")
 
 code("""REG_SET = {"FOLFOX","FOLFIRI","FOLFOXIRI","FOLFIRINOX","CAPOX","CAPIRI",
-           "FLOT","SOX","FP","XP","ECF","ECX"}
+           "FLOT","SOX","FP","XP","ECF","ECX","TPF"}
 ADD_MAP = {"bevacizumab":"anti-VEGF","fruquintinib":"anti-VEGF","regorafenib":"anti-VEGF","ramucirumab":"anti-VEGF",
            "cetuximab":"anti-EGFR","panitumumab":"anti-EGFR",
            "pembrolizumab":"IO","nivolumab":"IO","dostarlimab":"IO","atezolizumab":"IO","durvalumab":"IO",

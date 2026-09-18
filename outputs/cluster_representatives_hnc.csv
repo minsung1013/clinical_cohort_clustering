@@ -1,0 +1,9 @@
+cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
+0,4,"Rakuten Medical, Inc. (빅파마 없음·최근접)",standard_of_care,-,Phase 3,NCT03769506,"Merus B.V., ImmunityBio, Inc., CSPC Megalith Biopharmaceutical Co.,Ltd."
+1,19,Merck Sharp & Dohme LLC,pembrolizumab,"PD-L1_CPS, MSI-H/dMMR",Phase 2,NCT02628067,"Precision Biologics, Inc, Nanobiotix, USWM CT, LLC, BioNTech SE, ALX Oncology Inc., Medicenna Therapeutics, Inc., Rapa Therapeutics LLC, IO Biotech …"
+2,5,"MediLink Therapeutics (Suzhou) Co., Ltd. (빅파마 없음·최근접)",capecitabine;docetaxel;gemcitabine,-,Phase 3,NCT06629597,"Lepu Biopharma Co., Ltd., CSPC Zhongnuo Pharmaceutical (Shijiazhuang) Co., Ltd., Shanghai JMT-Bio Inc."
+3,7,Gilead Sciences,carboplatin;paclitaxel,"PD-L1_CPS, HPV_p16",Phase 2,NCT06727565,"Suzhou Junde Biotechnology Co., Ltd, Sichuan Baili Pharmaceutical Co., Ltd., NATCO Pharma Ltd., Lyvgen Biopharma Holdings Limited, Akeso, Johnson & Johnson Enterprise Innovation Inc."
+4,6,AstraZeneca,cetuximab,PD-L1_CPS,Phase 3,NCT04590963,"Pfizer, Lepu Biopharma Co., Ltd., AVEO Pharmaceuticals, Inc., Shanghai Institute Of Biological Products, Corbus Pharmaceuticals Inc."
+5,3,Regeneron Pharmaceuticals,cemiplimab,EGFR,Phase 2,NCT03916627,"Vyriad, Inc."
+6,7,ALX Oncology Inc.,FP;carboplatin;pembrolizumab,PD-L1_CPS,Phase 2,NCT04675333,"Asher Biotherapeutics, Inc., MediLink Therapeutics (Suzhou) Co., Ltd., Rakuten Medical, Inc., Janssen Research & Development, LLC, AbbVie, Bicara Therapeutics"
+7,17,Merck Sharp & Dohme LLC,cisplatin,"PD-L1_CPS, HPV_p16",Phase 3,NCT03765918,"Hoffmann-La Roche, Eli Lilly and Company, NeoTX Therapeutics Ltd., Novartis Pharmaceuticals, Xynomic Pharmaceuticals, Inc., Sichuan Kelun-Biotech Biopharmaceutical Co., Ltd., Coherus Oncology, Inc., Volastra Therapeutics, Inc. …"

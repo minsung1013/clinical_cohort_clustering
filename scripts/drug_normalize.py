@@ -51,6 +51,7 @@ STANDARD_OF_CARE = {
     "trifluridine/tipiracil", "gemcitabine", "cisplatin", "carboplatin",
     "paclitaxel", "docetaxel", "pemetrexed", "mitomycin",
     "s-1", "epirubicin",                                    # gastric
+    "methotrexate",                                          # head & neck (2L)
     # anti-angiogenic
     "bevacizumab", "aflibercept", "ramucirumab", "fruquintinib", "regorafenib",
     # anti-EGFR
@@ -81,10 +82,10 @@ SOC_CLASS = {
         "fluorouracil", "capecitabine", "oxaliplatin", "irinotecan", "leucovorin",
         "trifluridine/tipiracil", "gemcitabine", "cisplatin", "carboplatin",
         "paclitaxel", "docetaxel", "pemetrexed", "mitomycin", "s-1", "epirubicin",
-        "nab-paclitaxel", "etoposide", "vinorelbine",
+        "nab-paclitaxel", "etoposide", "vinorelbine", "methotrexate",
         # regimen-level tokens (kept atomic, not decomposed)
         "FOLFOX", "FOLFIRI", "FOLFOXIRI", "FOLFIRINOX", "CAPOX", "CAPIRI",
-        "FLOT", "SOX", "FP", "XP", "ECF", "ECX",
+        "FLOT", "SOX", "FP", "XP", "ECF", "ECX", "TPF",
     },
     "anti_VEGF": {"bevacizumab", "aflibercept", "ramucirumab", "fruquintinib", "regorafenib"},
     "anti_EGFR": {"cetuximab", "panitumumab"},
@@ -128,6 +129,7 @@ REGIMEN_COMPONENTS = {
     "XP": {"capecitabine", "cisplatin"},
     "ECF": {"epirubicin", "cisplatin", "fluorouracil"},
     "ECX": {"epirubicin", "cisplatin", "capecitabine"},
+    "TPF": {"docetaxel", "cisplatin", "fluorouracil"},   # head & neck
 }
 
 
@@ -191,6 +193,7 @@ def soc_from_text(raw: str) -> set[str]:
 _RECON = [
     ({"fluorouracil", "leucovorin", "oxaliplatin", "docetaxel"}, "FLOT"),
     ({"fluorouracil", "leucovorin", "oxaliplatin", "irinotecan"}, "FOLFOXIRI"),
+    ({"docetaxel", "cisplatin", "fluorouracil"}, "TPF"),
     ({"epirubicin", "cisplatin", "fluorouracil"}, "ECF"),
     ({"epirubicin", "cisplatin", "capecitabine"}, "ECX"),
     ({"fluorouracil", "leucovorin", "oxaliplatin"}, "FOLFOX"),
@@ -224,6 +227,7 @@ REGIMENS = {
     "xp": {"capecitabine", "cisplatin"},
     "ecf": {"epirubicin", "cisplatin", "fluorouracil"},
     "ecx": {"epirubicin", "cisplatin", "capecitabine"},
+    "tpf": {"docetaxel", "cisplatin", "fluorouracil"},
 }
 
 # regimen name variants -> canonical atomic label (kept as a single feature)
@@ -233,8 +237,9 @@ REGIMEN_LABEL = {
     "mfolfiri": "FOLFIRI", "folfiri": "FOLFIRI",
     "capox": "CAPOX", "capeox": "CAPOX", "xelox": "CAPOX",
     "capiri": "CAPIRI", "xeliri": "CAPIRI",
-    # gastric
+    # gastric / head & neck
     "flot": "FLOT", "sox": "SOX", "fp": "FP", "cf": "FP", "xp": "XP", "ecf": "ECF", "ecx": "ECX",
+    "tpf": "TPF",
 }
 
 # supportive / non-treatment agents — flagged, excluded from "standard therapy B"
