@@ -1,13 +1,15 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>임상 코호트 인텔리전스</title>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="ttl">Clinical Cohort Intelligence</title>
 <style>
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;
-       color:#0f172a;background:#f1f5f9}
-  header{background:#0f172a;color:#fff;padding:26px 22px;text-align:center}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;color:#0f172a;background:#f1f5f9}
+  header{background:#0f172a;color:#fff;padding:22px;text-align:center;position:relative}
   header h1{margin:0;font-size:22px}
   header p{margin:8px auto 0;color:#94a3b8;font-size:13px;max-width:680px;line-height:1.6}
+  .lang{position:absolute;top:16px;right:18px;display:flex;border:1px solid #334155;border-radius:8px;overflow:hidden}
+  .lang button{background:#1e293b;color:#94a3b8;border:0;padding:6px 11px;font-size:12px;cursor:pointer}
+  .lang button.on{background:#2563eb;color:#fff}
   .container{max-width:900px;margin:0 auto;padding:26px 22px 40px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
   .card{display:flex;flex-direction:column;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
@@ -17,7 +19,7 @@
   .thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
   .body{padding:15px 17px;display:flex;flex-direction:column;flex:1}
   .body h2{margin:0 0 6px;font-size:17px}
-  .body p{margin:0 0 13px;color:#64748b;font-size:12.5px;line-height:1.5;flex:1}
+  .cdesc{margin:0 0 13px;color:#64748b;font-size:12.5px;line-height:1.5;flex:1}
   .links{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .open{color:#2563eb;font-weight:600;font-size:13px}
   .rep{color:#475569;font-size:12px;text-decoration:none}.rep:hover{text-decoration:underline}
@@ -25,182 +27,207 @@
 </style></head>
 <body>
 <header>
-  <h1>임상 코호트 인텔리전스</h1>
-  <p>진행 중인 항암 임상 코호트를 분석해, 공간전사체 + AI 종양미세환경(TME) 분석 관점에서
-     표준치료(B) 데이터 자산의 가치를 우선순위화합니다. 암종을 선택하세요.</p>
+  <div class="lang"><button id="ko" class="on">KO</button><button id="en">EN</button></div>
+  <h1 id="h1"></h1><p id="desc"></p>
 </header>
-<div class="container">
-  <div class="grid">
+<div class="container"><div class="grid">
       <a class="card" href="bladder.html">
-        <div class="thumb"><img src="bladder.png" alt="방광암(Bladder) map"></div>
+        <div class="thumb"><img src="bladder.png" alt="Bladder map"></div>
         <div class="body">
-          <h2>방광암(Bladder)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="방광암" data-en="Bladder">방광암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="breast.html">
-        <div class="thumb"><img src="breast.png" alt="유방암(Breast) map"></div>
+        <div class="thumb"><img src="breast.png" alt="Breast map"></div>
         <div class="body">
-          <h2>유방암(Breast)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="유방암" data-en="Breast">유방암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="crc.html">
-        <div class="thumb"><img src="crc.png" alt="대장암(Colorectal) map"></div>
+        <div class="thumb"><img src="crc.png" alt="Colorectal map"></div>
         <div class="body">
-          <h2>대장암(Colorectal)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span><a class="rep" href="report_crc.html">📄 분석 리포트</a></div>
+          <h2 data-ko="대장암" data-en="Colorectal">대장암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span><a class="rep" href="report_crc.html"></a></div>
         </div>
       </a>
 
       <a class="card" href="endometrial.html">
-        <div class="thumb"><img src="endometrial.png" alt="자궁내막암(Endometrial) map"></div>
+        <div class="thumb"><img src="endometrial.png" alt="Endometrial map"></div>
         <div class="body">
-          <h2>자궁내막암(Endometrial)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="자궁내막암" data-en="Endometrial">자궁내막암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="esoph.html">
-        <div class="thumb"><img src="esoph.png" alt="식도암(Esophageal) map"></div>
+        <div class="thumb"><img src="esoph.png" alt="Esophageal map"></div>
         <div class="body">
-          <h2>식도암(Esophageal)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="식도암" data-en="Esophageal">식도암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="gastric.html">
-        <div class="thumb"><img src="gastric.png" alt="위암(Gastric) map"></div>
+        <div class="thumb"><img src="gastric.png" alt="Gastric map"></div>
         <div class="body">
-          <h2>위암(Gastric)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span><a class="rep" href="report_gastric.html">📄 분석 리포트</a></div>
+          <h2 data-ko="위암" data-en="Gastric">위암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span><a class="rep" href="report_gastric.html"></a></div>
         </div>
       </a>
 
       <a class="card" href="glioma.html">
-        <div class="thumb"><img src="glioma.png" alt="신경교종(Glioma) map"></div>
+        <div class="thumb"><img src="glioma.png" alt="Glioma map"></div>
         <div class="body">
-          <h2>신경교종(Glioma)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="신경교종" data-en="Glioma">신경교종</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="hnc.html">
-        <div class="thumb"><img src="hnc.png" alt="두경부암(Head & Neck) map"></div>
+        <div class="thumb"><img src="hnc.png" alt="Head & Neck map"></div>
         <div class="body">
-          <h2>두경부암(Head & Neck)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span><a class="rep" href="report_hnc.html">📄 분석 리포트</a></div>
+          <h2 data-ko="두경부암" data-en="Head & Neck">두경부암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span><a class="rep" href="report_hnc.html"></a></div>
         </div>
       </a>
 
       <a class="card" href="liver.html">
-        <div class="thumb"><img src="liver.png" alt="간암(Liver) map"></div>
+        <div class="thumb"><img src="liver.png" alt="Liver map"></div>
         <div class="body">
-          <h2>간암(Liver)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="간암" data-en="Liver">간암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="lung.html">
-        <div class="thumb"><img src="lung.png" alt="폐암(Lung) map"></div>
+        <div class="thumb"><img src="lung.png" alt="Lung map"></div>
         <div class="body">
-          <h2>폐암(Lung)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span><a class="rep" href="report_lung.html">📄 분석 리포트</a></div>
+          <h2 data-ko="폐암" data-en="Lung">폐암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span><a class="rep" href="report_lung.html"></a></div>
         </div>
       </a>
 
       <a class="card" href="melanoma.html">
-        <div class="thumb"><img src="melanoma.png" alt="흑색종(Melanoma) map"></div>
+        <div class="thumb"><img src="melanoma.png" alt="Melanoma map"></div>
         <div class="body">
-          <h2>흑색종(Melanoma)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="흑색종" data-en="Melanoma">흑색종</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="meso.html">
-        <div class="thumb"><img src="meso.png" alt="중피종(Mesothelioma) map"></div>
+        <div class="thumb"><img src="meso.png" alt="Mesothelioma map"></div>
         <div class="body">
-          <h2>중피종(Mesothelioma)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="중피종" data-en="Mesothelioma">중피종</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="net.html">
-        <div class="thumb"><img src="net.png" alt="신경내분비종양(NET) map"></div>
+        <div class="thumb"><img src="net.png" alt="Neuroendocrine map"></div>
         <div class="body">
-          <h2>신경내분비종양(NET)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="신경내분비종양" data-en="Neuroendocrine">신경내분비종양</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="ovarian.html">
-        <div class="thumb"><img src="ovarian.png" alt="난소암(Ovarian) map"></div>
+        <div class="thumb"><img src="ovarian.png" alt="Ovarian map"></div>
         <div class="body">
-          <h2>난소암(Ovarian)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="난소암" data-en="Ovarian">난소암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="panc.html">
-        <div class="thumb"><img src="panc.png" alt="췌장암(Pancreatic) map"></div>
+        <div class="thumb"><img src="panc.png" alt="Pancreatic map"></div>
         <div class="body">
-          <h2>췌장암(Pancreatic)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="췌장암" data-en="Pancreatic">췌장암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="prostate.html">
-        <div class="thumb"><img src="prostate.png" alt="전립선암(Prostate) map"></div>
+        <div class="thumb"><img src="prostate.png" alt="Prostate map"></div>
         <div class="body">
-          <h2>전립선암(Prostate)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="전립선암" data-en="Prostate">전립선암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="renal.html">
-        <div class="thumb"><img src="renal.png" alt="신장암(Renal) map"></div>
+        <div class="thumb"><img src="renal.png" alt="Renal map"></div>
         <div class="body">
-          <h2>신장암(Renal)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="신장암" data-en="Renal">신장암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="sarcoma.html">
-        <div class="thumb"><img src="sarcoma.png" alt="육종(Sarcoma) map"></div>
+        <div class="thumb"><img src="sarcoma.png" alt="Sarcoma map"></div>
         <div class="body">
-          <h2>육종(Sarcoma)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="육종" data-en="Sarcoma">육종</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
       </a>
 
       <a class="card" href="skin.html">
-        <div class="thumb"><img src="skin.png" alt="피부암(Skin) map"></div>
+        <div class="thumb"><img src="skin.png" alt="Skin map"></div>
         <div class="body">
-          <h2>피부암(Skin)</h2>
-          <p>진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프</p>
-          <div class="links"><span class="open">대시보드 열기 →</span></div>
+          <h2 data-ko="피부암" data-en="Skin">피부암</h2>
+          <p class="cdesc"></p>
+          <div class="links"><span class="open"></span></div>
         </div>
-      </a></div>
-</div>
-<footer>업데이트 2026-09-19 · 데이터 출처: ClinicalTrials.gov</footer>
+      </a></div></div>
+<footer id="foot"></footer>
+<script>
+const DATE="2026-09-19";
+const I18N={
+ ko:{title:"임상 코호트 인텔리전스",
+     desc:"진행 중인 항암 임상 코호트를 분석해, 공간전사체 + AI 종양미세환경(TME) 분석 관점에서 표준치료(B) 데이터 자산의 가치를 우선순위화합니다. 암종을 선택하세요.",
+     cdesc:"진행 중 임상 코호트 · 표준치료(B) 데이터 자산 · 클러스터 랜드스케이프",
+     open:"대시보드 열기 →", report:"📄 분석 리포트", foot:d=>`업데이트 ${d} · 데이터 출처: ClinicalTrials.gov`},
+ en:{title:"Clinical Cohort Intelligence",
+     desc:"Analyze ongoing oncology clinical cohorts and prioritize standard-of-care (B) data assets for spatial-transcriptomics + AI tumor-microenvironment analysis. Choose a cancer type.",
+     cdesc:"Ongoing cohorts · standard-of-care (B) data assets · cluster landscape",
+     open:"Open dashboard →", report:"📄 Analysis report", foot:d=>`Updated ${d} · Source: ClinicalTrials.gov`}
+};
+let lang=localStorage.getItem('lang')||'ko';
+function applyLang(l){lang=l;const T=I18N[l];localStorage.setItem('lang',l);document.documentElement.lang=l;
+  document.getElementById('ko').classList.toggle('on',l==='ko');
+  document.getElementById('en').classList.toggle('on',l==='en');
+  document.getElementById('ttl').textContent=T.title;
+  document.getElementById('h1').textContent=T.title;
+  document.getElementById('desc').textContent=T.desc;
+  document.getElementById('foot').textContent=T.foot(DATE);
+  document.querySelectorAll('.card h2').forEach(h=>h.textContent=l==='ko'?h.dataset.ko:h.dataset.en);
+  document.querySelectorAll('.cdesc').forEach(e=>e.textContent=T.cdesc);
+  document.querySelectorAll('.open').forEach(e=>e.textContent=T.open);
+  document.querySelectorAll('.rep').forEach(e=>e.textContent=T.report);}
+document.getElementById('ko').onclick=()=>applyLang('ko');
+document.getElementById('en').onclick=()=>applyLang('en');
+applyLang(lang);
+</script>
 </body></html>

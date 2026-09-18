@@ -1,9 +1,9 @@
 cluster,n,대표 제약사,대조군 치료 B,바이오마커,phase,대표 NCT,다른 제약사
-0,9,Merck Sharp & Dohme LLC,docetaxel;irinotecan;paclitaxel,HER2,Phase 3,NCT06356311,"Jiangsu HengRui Medicine Co., Ltd., CARsgen Therapeutics Co., Ltd., Shanghai JMT-Bio Inc., CSPC ZhongQi Pharmaceutical Technology Co., Ltd., AstraZeneca, Onconic Therapeutics Inc., Sichuan Baili Pharmaceutical Co., Ltd."
-1,18,"Astellas Pharma Global Development, Inc.",CAPOX,"HER2, CLDN18.2",Phase 3,NCT03653507,"Suzhou Suncadia Biopharmaceuticals Co., Ltd., Ono Pharmaceutical Co., Ltd., AskGene Pharma, Inc., RemeGen Co., Ltd., FutureGen Biopharmaceutical (Beijing) Co., Ltd, Convalife (Shanghai) Co., Ltd., Shanghai Henlius Biotech, Sichuan Luzhou Buchang Biopharmaceutical Co., Ltd. …"
-2,6,"Seagen, a wholly owned subsidiary of Pfizer",trastuzumab;tucatinib,"HER2, PD-L1_CPS",Phase 2,NCT04430738,"Pfizer, AstraZeneca, Enliven Therapeutics, SUNHO（China）BioPharmaceutical CO., Ltd."
-3,2,Pfizer,nivolumab,PD-L1_CPS,Phase 3,NCT07392892,Teclison Ltd.
+0,3,AstraZeneca,trastuzumab;trastuzumab deruxtecan,HER2,Phase 2,NCT06271837,"Enliven Therapeutics, SUNHO（China）BioPharmaceutical CO., Ltd."
+1,22,"Astellas Pharma Global Development, Inc.",CAPOX,"HER2, CLDN18.2",Phase 3,NCT03653507,"AstraZeneca, Suzhou Suncadia Biopharmaceuticals Co., Ltd., Ono Pharmaceutical Co., Ltd., Jazz Pharmaceuticals, AskGene Pharma, Inc., RemeGen Co., Ltd., FutureGen Biopharmaceutical (Beijing) Co., Ltd, Convalife (Shanghai) Co., Ltd. …"
+2,5,Daiichi Sankyo,paclitaxel;ramucirumab,HER2,Phase 3,NCT04704934,"ALX Oncology Inc., Toray Industries, Inc, Merck Sharp & Dohme LLC, Innovent Biologics (Suzhou) Co. Ltd."
+3,3,Pfizer,tucatinib,HER2,Phase 1,NCT05382364,"Seagen, a wholly owned subsidiary of Pfizer"
 4,13,"Astellas Pharma Global Development, Inc.",FOLFOX,"HER2, CLDN18.2",Phase 3,NCT03504397,"BioEclipse Therapeutics, Bold Therapeutics, Inc., Taiho Oncology, Inc., Transcenta Therapeutics (Hangzhou) Co., Ltd., Merck Sharp & Dohme LLC, Bristol-Myers Squibb, AstraZeneca, I-Mab Biopharma US Limited …"
-5,8,Daiichi Sankyo,paclitaxel;ramucirumab,HER2,Phase 3,NCT04704934,"Astellas Pharma Global Development, Inc., NeoTX Therapeutics Ltd., ALX Oncology Inc., Toray Industries, Inc, Merck Sharp & Dohme LLC, Innovent Biologics (Suzhou) Co. Ltd., TwoStep Therapeutics, Inc."
-6,4,"Medicenna Therapeutics, Inc.",pembrolizumab,-,Phase 2,NCT05086692,"USWM CT, LLC, Qurient Co., Ltd., Servier Bio-Innovation LLC"
-7,4,AstraZeneca,CAPOX;FP;trastuzumab,HER2,Phase 2,NCT04379596,"Jazz Pharmaceuticals, Shanghai JMT-Bio Inc."
+5,9,Merck Sharp & Dohme LLC,docetaxel;irinotecan;paclitaxel,HER2,Phase 3,NCT06356311,"Jiangsu HengRui Medicine Co., Ltd., CARsgen Therapeutics Co., Ltd., Shanghai JMT-Bio Inc., CSPC ZhongQi Pharmaceutical Technology Co., Ltd., AstraZeneca, Onconic Therapeutics Inc., Sichuan Baili Pharmaceutical Co., Ltd."
+6,7,Pfizer,nivolumab,PD-L1_CPS,Phase 3,NCT07392892,"AstraZeneca, Teclison Ltd., Astellas Pharma Global Development, Inc., NeoTX Therapeutics Ltd., Beijing Biotech, TwoStep Therapeutics, Inc."
+7,4,"Medicenna Therapeutics, Inc.",pembrolizumab,-,Phase 2,NCT05086692,"USWM CT, LLC, Qurient Co., Ltd., Servier Bio-Innovation LLC"
