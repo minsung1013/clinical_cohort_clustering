@@ -36,14 +36,13 @@ def cards():
             shutil.copy(thumb, SITE / f"{slug}.png")
             img = f'<img src="{slug}.png" alt="{en} map">'
         items.append(f"""
-      <a class="card" href="{slug}.html">
-        <div class="thumb">{img}</div>
-        <div class="body">
-          <h2 data-ko="{ko}" data-en="{en}">{ko}</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span>{rep_link}</div>
-        </div>
-      </a>""")
+      <div class="card">
+        <a class="cardlink" href="{slug}.html">
+          <div class="thumb">{img}</div>
+          <div class="body"><h2 data-ko="{ko}" data-en="{en}">{ko}</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="{slug}.html"></a>{rep_link}</div>
+      </div>""")
     return "\n".join(items)
 
 
@@ -69,15 +68,16 @@ _PAGE = r"""<!doctype html>
   .container{max-width:1140px;margin:0 auto;padding:26px 22px 40px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
   .card{display:flex;flex-direction:column;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
-        overflow:hidden;text-decoration:none;color:inherit;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+        overflow:hidden;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,.12);border-color:#cbd5e1}
-  .thumb{aspect-ratio:16/10;background:#f8fafc;overflow:hidden;border-bottom:1px solid #eef2f7}
+  .cardlink{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
+  .thumb{aspect-ratio:16/11;background:#f8fafc;overflow:hidden;border-bottom:1px solid #eef2f7}
   .thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-  .body{padding:15px 17px;display:flex;flex-direction:column;flex:1}
+  .body{padding:14px 16px 8px;display:flex;flex-direction:column;flex:1}
   .body h2{margin:0 0 6px;font-size:17px}
-  .cdesc{margin:0 0 13px;color:#64748b;font-size:12.5px;line-height:1.5;flex:1}
-  .links{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .open{color:#2563eb;font-weight:600;font-size:13px}
+  .cdesc{margin:0;color:#64748b;font-size:12.5px;line-height:1.5}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px 14px}
+  .open{color:#2563eb;font-weight:600;font-size:13px;text-decoration:none}
   .rep{color:#475569;font-size:12px;text-decoration:none}.rep:hover{text-decoration:underline}
   footer{text-align:center;color:#94a3b8;font-size:12px;padding:0 22px 34px}
 </style></head>

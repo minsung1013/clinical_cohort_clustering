@@ -13,15 +13,16 @@
   .container{max-width:1140px;margin:0 auto;padding:26px 22px 40px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
   .card{display:flex;flex-direction:column;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
-        overflow:hidden;text-decoration:none;color:inherit;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+        overflow:hidden;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,.12);border-color:#cbd5e1}
-  .thumb{aspect-ratio:16/10;background:#f8fafc;overflow:hidden;border-bottom:1px solid #eef2f7}
+  .cardlink{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
+  .thumb{aspect-ratio:16/11;background:#f8fafc;overflow:hidden;border-bottom:1px solid #eef2f7}
   .thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-  .body{padding:15px 17px;display:flex;flex-direction:column;flex:1}
+  .body{padding:14px 16px 8px;display:flex;flex-direction:column;flex:1}
   .body h2{margin:0 0 6px;font-size:17px}
-  .cdesc{margin:0 0 13px;color:#64748b;font-size:12.5px;line-height:1.5;flex:1}
-  .links{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .open{color:#2563eb;font-weight:600;font-size:13px}
+  .cdesc{margin:0;color:#64748b;font-size:12.5px;line-height:1.5}
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px 14px}
+  .open{color:#2563eb;font-weight:600;font-size:13px;text-decoration:none}
   .rep{color:#475569;font-size:12px;text-decoration:none}.rep:hover{text-decoration:underline}
   footer{text-align:center;color:#94a3b8;font-size:12px;padding:0 22px 34px}
 </style></head>
@@ -31,176 +32,157 @@
   <h1 id="h1"></h1><p id="desc"></p>
 </header>
 <div class="container"><div class="grid">
-      <a class="card" href="bladder.html">
-        <div class="thumb"><img src="bladder.png" alt="Bladder map"></div>
-        <div class="body">
-          <h2 data-ko="방광암" data-en="Bladder">방광암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="bladder.html">
+          <div class="thumb"><img src="bladder.png" alt="Bladder map"></div>
+          <div class="body"><h2 data-ko="방광암" data-en="Bladder">방광암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="bladder.html"></a></div>
+      </div>
 
-      <a class="card" href="breast.html">
-        <div class="thumb"><img src="breast.png" alt="Breast map"></div>
-        <div class="body">
-          <h2 data-ko="유방암" data-en="Breast">유방암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="breast.html">
+          <div class="thumb"><img src="breast.png" alt="Breast map"></div>
+          <div class="body"><h2 data-ko="유방암" data-en="Breast">유방암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="breast.html"></a></div>
+      </div>
 
-      <a class="card" href="crc.html">
-        <div class="thumb"><img src="crc.png" alt="Colorectal map"></div>
-        <div class="body">
-          <h2 data-ko="대장암" data-en="Colorectal">대장암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span><a class="rep" href="report_crc.html"></a></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="crc.html">
+          <div class="thumb"><img src="crc.png" alt="Colorectal map"></div>
+          <div class="body"><h2 data-ko="대장암" data-en="Colorectal">대장암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="crc.html"></a><a class="rep" href="report_crc.html"></a></div>
+      </div>
 
-      <a class="card" href="endometrial.html">
-        <div class="thumb"><img src="endometrial.png" alt="Endometrial map"></div>
-        <div class="body">
-          <h2 data-ko="자궁내막암" data-en="Endometrial">자궁내막암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="endometrial.html">
+          <div class="thumb"><img src="endometrial.png" alt="Endometrial map"></div>
+          <div class="body"><h2 data-ko="자궁내막암" data-en="Endometrial">자궁내막암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="endometrial.html"></a></div>
+      </div>
 
-      <a class="card" href="esoph.html">
-        <div class="thumb"><img src="esoph.png" alt="Esophageal map"></div>
-        <div class="body">
-          <h2 data-ko="식도암" data-en="Esophageal">식도암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="esoph.html">
+          <div class="thumb"><img src="esoph.png" alt="Esophageal map"></div>
+          <div class="body"><h2 data-ko="식도암" data-en="Esophageal">식도암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="esoph.html"></a></div>
+      </div>
 
-      <a class="card" href="gastric.html">
-        <div class="thumb"><img src="gastric.png" alt="Gastric map"></div>
-        <div class="body">
-          <h2 data-ko="위암" data-en="Gastric">위암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span><a class="rep" href="report_gastric.html"></a></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="gastric.html">
+          <div class="thumb"><img src="gastric.png" alt="Gastric map"></div>
+          <div class="body"><h2 data-ko="위암" data-en="Gastric">위암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="gastric.html"></a><a class="rep" href="report_gastric.html"></a></div>
+      </div>
 
-      <a class="card" href="glioma.html">
-        <div class="thumb"><img src="glioma.png" alt="Glioma map"></div>
-        <div class="body">
-          <h2 data-ko="신경교종" data-en="Glioma">신경교종</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="glioma.html">
+          <div class="thumb"><img src="glioma.png" alt="Glioma map"></div>
+          <div class="body"><h2 data-ko="신경교종" data-en="Glioma">신경교종</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="glioma.html"></a></div>
+      </div>
 
-      <a class="card" href="hnc.html">
-        <div class="thumb"><img src="hnc.png" alt="Head & Neck map"></div>
-        <div class="body">
-          <h2 data-ko="두경부암" data-en="Head & Neck">두경부암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span><a class="rep" href="report_hnc.html"></a></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="hnc.html">
+          <div class="thumb"><img src="hnc.png" alt="Head & Neck map"></div>
+          <div class="body"><h2 data-ko="두경부암" data-en="Head & Neck">두경부암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="hnc.html"></a><a class="rep" href="report_hnc.html"></a></div>
+      </div>
 
-      <a class="card" href="liver.html">
-        <div class="thumb"><img src="liver.png" alt="Liver map"></div>
-        <div class="body">
-          <h2 data-ko="간암" data-en="Liver">간암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="liver.html">
+          <div class="thumb"><img src="liver.png" alt="Liver map"></div>
+          <div class="body"><h2 data-ko="간암" data-en="Liver">간암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="liver.html"></a></div>
+      </div>
 
-      <a class="card" href="lung.html">
-        <div class="thumb"><img src="lung.png" alt="Lung map"></div>
-        <div class="body">
-          <h2 data-ko="폐암" data-en="Lung">폐암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span><a class="rep" href="report_lung.html"></a></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="lung.html">
+          <div class="thumb"><img src="lung.png" alt="Lung map"></div>
+          <div class="body"><h2 data-ko="폐암" data-en="Lung">폐암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="lung.html"></a><a class="rep" href="report_lung.html"></a></div>
+      </div>
 
-      <a class="card" href="melanoma.html">
-        <div class="thumb"><img src="melanoma.png" alt="Melanoma map"></div>
-        <div class="body">
-          <h2 data-ko="흑색종" data-en="Melanoma">흑색종</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="melanoma.html">
+          <div class="thumb"><img src="melanoma.png" alt="Melanoma map"></div>
+          <div class="body"><h2 data-ko="흑색종" data-en="Melanoma">흑색종</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="melanoma.html"></a></div>
+      </div>
 
-      <a class="card" href="meso.html">
-        <div class="thumb"><img src="meso.png" alt="Mesothelioma map"></div>
-        <div class="body">
-          <h2 data-ko="중피종" data-en="Mesothelioma">중피종</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="meso.html">
+          <div class="thumb"><img src="meso.png" alt="Mesothelioma map"></div>
+          <div class="body"><h2 data-ko="중피종" data-en="Mesothelioma">중피종</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="meso.html"></a></div>
+      </div>
 
-      <a class="card" href="net.html">
-        <div class="thumb"><img src="net.png" alt="Neuroendocrine map"></div>
-        <div class="body">
-          <h2 data-ko="신경내분비종양" data-en="Neuroendocrine">신경내분비종양</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="net.html">
+          <div class="thumb"><img src="net.png" alt="Neuroendocrine map"></div>
+          <div class="body"><h2 data-ko="신경내분비종양" data-en="Neuroendocrine">신경내분비종양</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="net.html"></a></div>
+      </div>
 
-      <a class="card" href="ovarian.html">
-        <div class="thumb"><img src="ovarian.png" alt="Ovarian map"></div>
-        <div class="body">
-          <h2 data-ko="난소암" data-en="Ovarian">난소암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="ovarian.html">
+          <div class="thumb"><img src="ovarian.png" alt="Ovarian map"></div>
+          <div class="body"><h2 data-ko="난소암" data-en="Ovarian">난소암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="ovarian.html"></a></div>
+      </div>
 
-      <a class="card" href="panc.html">
-        <div class="thumb"><img src="panc.png" alt="Pancreatic map"></div>
-        <div class="body">
-          <h2 data-ko="췌장암" data-en="Pancreatic">췌장암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="panc.html">
+          <div class="thumb"><img src="panc.png" alt="Pancreatic map"></div>
+          <div class="body"><h2 data-ko="췌장암" data-en="Pancreatic">췌장암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="panc.html"></a></div>
+      </div>
 
-      <a class="card" href="prostate.html">
-        <div class="thumb"><img src="prostate.png" alt="Prostate map"></div>
-        <div class="body">
-          <h2 data-ko="전립선암" data-en="Prostate">전립선암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="prostate.html">
+          <div class="thumb"><img src="prostate.png" alt="Prostate map"></div>
+          <div class="body"><h2 data-ko="전립선암" data-en="Prostate">전립선암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="prostate.html"></a></div>
+      </div>
 
-      <a class="card" href="renal.html">
-        <div class="thumb"><img src="renal.png" alt="Renal map"></div>
-        <div class="body">
-          <h2 data-ko="신장암" data-en="Renal">신장암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="renal.html">
+          <div class="thumb"><img src="renal.png" alt="Renal map"></div>
+          <div class="body"><h2 data-ko="신장암" data-en="Renal">신장암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="renal.html"></a></div>
+      </div>
 
-      <a class="card" href="sarcoma.html">
-        <div class="thumb"><img src="sarcoma.png" alt="Sarcoma map"></div>
-        <div class="body">
-          <h2 data-ko="육종" data-en="Sarcoma">육종</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a>
+      <div class="card">
+        <a class="cardlink" href="sarcoma.html">
+          <div class="thumb"><img src="sarcoma.png" alt="Sarcoma map"></div>
+          <div class="body"><h2 data-ko="육종" data-en="Sarcoma">육종</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="sarcoma.html"></a></div>
+      </div>
 
-      <a class="card" href="skin.html">
-        <div class="thumb"><img src="skin.png" alt="Skin map"></div>
-        <div class="body">
-          <h2 data-ko="피부암" data-en="Skin">피부암</h2>
-          <p class="cdesc"></p>
-          <div class="links"><span class="open"></span></div>
-        </div>
-      </a></div></div>
+      <div class="card">
+        <a class="cardlink" href="skin.html">
+          <div class="thumb"><img src="skin.png" alt="Skin map"></div>
+          <div class="body"><h2 data-ko="피부암" data-en="Skin">피부암</h2><p class="cdesc"></p></div>
+        </a>
+        <div class="foot"><a class="open" href="skin.html"></a></div>
+      </div></div></div>
 <footer id="foot"></footer>
 <script>
 const DATE="2026-09-20";
