@@ -86,9 +86,6 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
     fig_div, hl_index = _build_fig(dfp, hexcol)
     extra = _load_extra()
 
-    def bio_str(r):
-        return ", ".join([b for b in bm_cols if r.get(b, 0) == 1]) or "-"
-
     trials = []
     for _, r in dfp.iterrows():
         e = extra.get(r.nct_id, {})
@@ -100,7 +97,9 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
             "B": r.B_soc or "-", "A": r.get("experimental_A") or "-",
             "targets": r.get("targets") or "-", "modalities": r.get("modalities") or "-",
             "tme": int(r.get("tme_relevant", 0)),
-            "bio": bio_str(r), "sponsor": r.lead_sponsor or "-",
+            "bio": (r.get("biomarker_detail") if pd.notna(r.get("biomarker_detail")) and r.get("biomarker_detail") else "-"),
+            "elig_sum": (r.get("elig_summary") if pd.notna(r.get("elig_summary")) and r.get("elig_summary") else ""),
+            "sponsor": r.lead_sponsor or "-",
             "scale": int(r.sponsor_scale) if pd.notna(r.sponsor_scale) else 0,
             "enroll": int(r.enrollment) if pd.notna(r.enrollment) else None,
             "big": int(r.is_big_pharma), "start": e.get("start", ""), "pcd": e.get("pcd", ""),
@@ -212,7 +211,7 @@ const I18N={
      clusters:"클러스터 개요 (표준치료 아키타입)", rep:"대표", near:"(빅파마 없음·최근접)",
      hint:"상단에서 제약사를 선택하거나 맵의 점을 클릭하세요.",
      reg:"표준치료 레지멘(B)", A:"실험약(A)", target:"타겟", modality:"모달리티",
-     bio:"바이오마커(eligibility)", spon:"스폰서", start:"시작", pcd:"1차완료(예정)",
+     bio:"바이오마커(선택)", elig_sum:"선정기준(요약)", spon:"스폰서", start:"시작", pcd:"1차완료(예정)",
      summary:"연구 요약", elig:"선정기준(발췌)", trials:n=>`${n}건`, scale:"R&D 규모"},
  en:{cancer:CE, title:c=>`${c} clinical-cohort dashboard`,
      sub:c=>`Ongoing ${c} · industry-sponsored · standard-of-care cohorts (color=cluster · opacity=phase · size=R&D scale · outline=big pharma)`,
@@ -220,7 +219,7 @@ const I18N={
      clusters:"Cluster overview (standard-of-care archetypes)", rep:"Rep", near:"(no big pharma · nearest)",
      hint:"Select a sponsor above, or click a point on the map.",
      reg:"Standard-of-care regimen (B)", A:"Experimental (A)", target:"Target", modality:"Modality",
-     bio:"Biomarker (eligibility)", spon:"Sponsor", start:"Start", pcd:"Primary completion (est.)",
+     bio:"Biomarker (selection)", elig_sum:"Eligibility (summary)", spon:"Sponsor", start:"Start", pcd:"Primary completion (est.)",
      summary:"Study summary", elig:"Eligibility (excerpt)", trials:n=>`${n} trial${n>1?'s':''}`, scale:"R&D"}
 };
 let lang=localStorage.getItem('lang')||'ko', T=I18N[lang];
@@ -238,6 +237,7 @@ function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
     <div class="row"><b>${T.A}:</b> ${t.A}</div>
     <div class="row"><b>${T.target}:</b> ${t.targets}　<b>${T.modality}:</b> ${t.modalities}</div>
     <div class="row"><b>${T.bio}:</b> ${t.bio}</div>
+    ${t.elig_sum?`<div class="row"><b>${T.elig_sum}:</b> ${t.elig_sum}</div>`:''}
     <div class="row"><b>${T.spon}:</b> ${t.sponsor} <span class="muted">(${T.scale} ${t.scale})</span></div>
     <div class="row muted">${T.start} ${fmt(t.start)} · ${T.pcd} ${fmt(t.pcd)}</div>
     ${t.summary?`<details class="sum"><summary>${T.summary}</summary><p>${t.summary}</p></details>`:''}

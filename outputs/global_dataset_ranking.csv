@@ -1,0 +1,290 @@
+cancer,B (standard therapy),demand_breadth,sponsors,bigpharma,n_phase3,enroll_sum,tme_rel%,global_value
+Lung,carboplatin,135,58,78,97,60927,69,0.984
+Lung,pemetrexed,104,46,64,77,50198,65,0.79
+Lung,pembrolizumab,100,49,63,65,49505,84,0.774
+Lung,cisplatin,86,35,57,70,42218,67,0.677
+Lung,paclitaxel,53,26,36,36,27217,81,0.457
+Breast,fluorouracil,59,33,29,33,19964,3,0.438
+Lung,docetaxel,44,39,17,32,18465,64,0.411
+Breast,fulvestrant,53,28,29,32,19116,0,0.401
+Breast,paclitaxel,44,25,21,34,26435,89,0.4
+Breast,capecitabine,43,26,20,36,27228,86,0.399
+Colorectal,bevacizumab,40,37,16,19,14909,82,0.378
+Breast,trastuzumab,45,20,20,29,21247,84,0.376
+Ovarian,paclitaxel,41,26,12,25,16181,73,0.351
+Pancreatic,gemcitabine,42,37,4,16,11550,38,0.336
+Pancreatic,paclitaxel,40,35,4,14,10975,42,0.322
+Prostate,abiraterone,38,21,23,25,25780,13,0.32
+Melanoma,pembrolizumab,34,29,18,11,9992,74,0.32
+Lung,etoposide,29,20,15,20,10326,86,0.295
+Lung,osimertinib,38,19,15,16,10768,32,0.29
+Prostate,enzalutamide,32,23,20,20,22570,9,0.289
+Ovarian,bevacizumab,27,16,17,19,14799,93,0.286
+Bladder,gemcitabine,26,15,16,24,14241,69,0.274
+Breast,nab-paclitaxel,24,14,15,21,14259,96,0.271
+Lung,durvalumab,25,13,21,13,8400,84,0.259
+Lung,atezolizumab,23,17,16,14,6296,91,0.257
+Endometrial,paclitaxel,23,16,11,19,12293,83,0.256
+Breast,gemcitabine,21,17,9,20,10346,90,0.252
+Pancreatic,nab-paclitaxel,30,26,4,11,8091,30,0.251
+Head & Neck,pembrolizumab,24,21,12,8,7678,75,0.249
+Breast,letrozole,27,15,15,23,37290,0,0.248
+Breast,carboplatin,20,14,11,17,15527,90,0.243
+Ovarian,doxorubicin,21,16,8,17,10045,81,0.238
+Breast,pertuzumab,22,13,6,16,12217,82,0.231
+Glioma,temozolomide,27,27,3,5,4131,33,0.229
+Bladder,cisplatin,17,13,12,16,11483,94,0.229
+Colorectal,FOLFOX,20,19,8,9,6511,80,0.226
+Breast,eribulin,19,16,5,16,7884,84,0.224
+Melanoma,nivolumab,19,16,5,14,7650,79,0.218
+Ovarian,carboplatin,20,13,9,8,8251,80,0.212
+Liver,bevacizumab,18,13,6,9,7982,94,0.209
+Lung,nab-paclitaxel,17,8,15,11,9146,88,0.209
+Gastric,CAPOX,17,13,4,12,8276,94,0.207
+Ovarian,liposomal doxorubicin,16,12,8,13,8257,75,0.2
+Breast,pembrolizumab,15,10,12,8,11533,87,0.199
+Endometrial,pembrolizumab,16,11,10,7,7788,81,0.194
+Bladder,carboplatin,12,10,8,11,8244,100,0.19
+Lung,gemcitabine,15,5,13,12,10456,80,0.189
+Liver,durvalumab,15,9,9,10,5815,87,0.188
+Endometrial,carboplatin,13,9,7,12,7916,92,0.187
+Breast,docetaxel,16,9,0,12,9109,94,0.187
+Prostate,docetaxel,15,12,10,10,9153,53,0.185
+Colorectal,cetuximab,14,12,9,9,5960,71,0.184
+Ovarian,topotecan,13,11,5,12,6768,85,0.184
+Gastric,paclitaxel,13,11,5,8,4385,100,0.181
+Ovarian,gemcitabine,13,9,8,10,6413,85,0.18
+Breast,exemestane,17,11,10,14,29335,0,0.179
+Bladder,pembrolizumab,14,11,9,5,4901,79,0.177
+Breast,vinorelbine,13,12,2,11,4887,85,0.177
+Lung,topotecan,13,12,5,12,5501,69,0.176
+Endometrial,cisplatin,12,8,4,11,7187,92,0.173
+Liver,gemcitabine,15,10,5,9,6166,67,0.173
+Gastric,pembrolizumab,12,11,7,6,4451,83,0.17
+Lung,tislelizumab,13,10,1,11,5928,77,0.168
+Breast,doxorubicin,10,4,8,9,11705,100,0.168
+Breast,anastrozole,16,8,8,15,30748,0,0.166
+Lung,fluorouracil,19,16,2,2,3130,32,0.163
+Liver,atezolizumab,10,9,7,6,9764,80,0.163
+Breast,palbociclib,16,9,13,11,8538,6,0.163
+Liver,cisplatin,12,9,4,7,4836,83,0.162
+Gastric,FOLFOX,11,9,6,6,5918,82,0.161
+Gastric,trastuzumab,11,8,5,7,4661,91,0.161
+Breast,cyclophosphamide,10,7,5,6,9317,90,0.159
+Colorectal,FOLFIRI,11,11,6,5,4192,73,0.158
+Endometrial,bevacizumab,10,10,1,6,3762,100,0.157
+Breast,ribociclib,15,9,12,11,9322,0,0.156
+Renal,pembrolizumab,10,6,7,3,5217,90,0.15
+Esophageal,paclitaxel,11,9,3,5,2749,82,0.148
+Liver,lenvatinib,12,9,4,3,2811,75,0.147
+Breast,trastuzumab deruxtecan,9,4,8,4,2724,100,0.144
+Colorectal,pembrolizumab,11,9,8,0,2734,73,0.144
+Breast,epirubicin,7,5,4,5,8315,100,0.144
+Gastric,capecitabine,9,7,4,4,4573,89,0.144
+Breast,abemaciclib,13,7,10,9,17236,0,0.143
+Ovarian,pembrolizumab,8,8,7,2,1736,100,0.142
+Lung,nivolumab,10,10,5,4,2116,70,0.141
+Colorectal,FOLFOXIRI,7,6,5,5,3584,100,0.141
+Gastric,nivolumab,7,7,2,3,4450,100,0.138
+Breast,standard_of_care,10,7,3,8,7959,50,0.137
+Endometrial,doxorubicin,7,7,4,6,3790,86,0.137
+Colorectal,CAPOX,8,6,2,4,2709,100,0.136
+Gastric,irinotecan,8,7,2,6,2919,88,0.136
+Lung,cemiplimab,11,6,8,3,1328,73,0.134
+Melanoma,relatlimab,6,6,2,6,2714,100,0.132
+Esophageal,nivolumab,6,6,2,3,3954,100,0.131
+Gastric,ramucirumab,6,6,4,4,1927,100,0.129
+Liver,pembrolizumab,10,9,5,2,3509,50,0.129
+Bladder,enfortumab vedotin,7,7,3,3,2830,86,0.128
+Liver,sintilimab,6,6,0,4,2858,100,0.126
+Esophageal,irinotecan,8,8,2,6,3068,62,0.126
+Prostate,darolutamide,11,7,10,5,6551,9,0.126
+Head & Neck,carboplatin,7,7,5,2,1548,86,0.125
+Endometrial,docetaxel,6,4,4,6,3841,83,0.125
+Gastric,docetaxel,6,6,2,6,2758,83,0.124
+Esophageal,capecitabine,5,4,3,3,3847,100,0.123
+Breast,tamoxifen,9,6,5,8,26730,0,0.12
+Esophageal,FOLFOX,7,5,3,1,2881,86,0.12
+Ovarian,olaparib,12,6,7,7,3875,8,0.119
+Head & Neck,cisplatin,8,7,3,4,2118,62,0.119
+Colorectal,trifluridine/tipiracil,5,5,1,4,1782,100,0.118
+Lung,standard_of_care,7,7,1,7,3040,57,0.117
+Breast,olaparib,9,3,8,5,6014,33,0.116
+Colorectal,standard_of_care,7,7,2,3,1851,71,0.116
+Liver,sorafenib,6,6,3,4,3556,67,0.116
+Melanoma,ipilimumab,6,6,1,4,1626,83,0.114
+Head & Neck,cetuximab,6,6,2,4,1336,83,0.114
+Bladder,durvalumab,5,2,5,3,1439,100,0.113
+Esophageal,FP,4,4,1,4,2160,100,0.113
+Renal,lenvatinib,6,4,3,2,2581,83,0.113
+Gastric,FP,4,3,2,3,2702,100,0.113
+Liver,tremelimumab,6,4,4,3,1419,83,0.111
+Bladder,paclitaxel,5,5,1,5,1798,80,0.109
+Head & Neck,docetaxel,6,5,0,3,1539,83,0.108
+Colorectal,capecitabine,6,6,1,2,994,83,0.107
+Colorectal,fruquintinib,6,6,0,3,1013,83,0.107
+Liver,nivolumab,7,7,1,1,5896,43,0.107
+Breast,sacituzumab govitecan,6,4,3,2,1105,83,0.106
+Melanoma,dacarbazine,7,7,0,5,1348,57,0.105
+Breast,liposomal doxorubicin,3,1,3,3,2542,100,0.105
+Pancreatic,FOLFIRINOX,9,9,2,2,1456,33,0.105
+Esophageal,pembrolizumab,7,6,4,0,903,71,0.105
+Renal,nivolumab,7,6,2,3,7065,29,0.104
+Prostate,cabazitaxel,4,3,4,3,2427,75,0.103
+Bladder,nivolumab,5,5,2,1,1416,80,0.103
+Head & Neck,gemcitabine,6,5,0,4,1755,67,0.103
+Lung,vinorelbine,5,4,3,5,2494,60,0.103
+Head & Neck,paclitaxel,8,8,2,1,964,50,0.102
+Colorectal,fluorouracil,5,5,2,1,1357,80,0.102
+Esophageal,docetaxel,5,5,1,5,2400,60,0.102
+Endometrial,standard_of_care,3,3,1,3,1452,100,0.102
+Lung,ramucirumab,4,3,2,1,984,100,0.101
+Head & Neck,capecitabine,5,4,0,3,1734,80,0.101
+Mesothelioma,pembrolizumab,3,2,3,0,1883,100,0.1
+Melanoma,temozolomide,6,6,0,4,928,67,0.1
+Gastric,zolbetuximab,2,2,2,1,2273,100,0.099
+Neuroendocrine,etoposide,4,2,2,2,913,100,0.099
+Lung,bevacizumab,3,3,0,2,1330,100,0.098
+Bladder,docetaxel,7,4,1,6,1963,43,0.097
+Gastric,SOX,3,2,0,2,1612,100,0.097
+Lung,crizotinib,8,8,3,8,1999,0,0.096
+Ovarian,durvalumab,2,2,2,1,1527,100,0.095
+Colorectal,nivolumab,3,3,1,1,5138,67,0.094
+Melanoma,cemiplimab,4,3,3,0,454,100,0.094
+Skin,cemiplimab,3,2,3,1,735,100,0.094
+Colorectal,regorafenib,4,3,0,4,1406,75,0.093
+Neuroendocrine,carboplatin,3,2,1,2,848,100,0.093
+Head & Neck,standard_of_care,4,4,0,3,1166,75,0.092
+Neuroendocrine,pembrolizumab,2,1,2,0,1768,100,0.092
+Bladder,FP,2,2,2,2,910,100,0.092
+Gastric,tislelizumab,3,3,0,1,708,100,0.091
+Esophageal,standard_of_care,2,2,0,2,1203,100,0.091
+Liver,capecitabine,6,4,1,6,2254,33,0.09
+Mesothelioma,ipilimumab,2,2,1,1,989,100,0.09
+Mesothelioma,nivolumab,2,2,1,1,989,100,0.09
+Prostate,apalutamide,7,5,4,3,3129,14,0.09
+Ovarian,docetaxel,2,2,1,2,829,100,0.09
+Head & Neck,cyclophosphamide,5,5,0,0,185,100,0.09
+Endometrial,nab-paclitaxel,2,2,1,1,980,100,0.09
+Skin,pembrolizumab,4,3,2,1,262,100,0.089
+Esophageal,cisplatin,5,5,0,0,457,80,0.088
+Renal,cabozantinib,6,4,4,5,8344,0,0.088
+Renal,axitinib,4,4,1,1,791,75,0.087
+Colorectal,trastuzumab,4,3,3,0,894,75,0.087
+Bladder,mitomycin,4,3,4,4,1402,50,0.087
+Endometrial,topotecan,3,3,1,3,1452,67,0.086
+Bladder,standard_of_care,2,2,0,2,690,100,0.086
+Endometrial,gemcitabine,3,3,1,3,1452,67,0.086
+Lung,s-1,12,3,0,0,2694,8,0.086
+Melanoma,paclitaxel,4,4,0,2,715,75,0.086
+Endometrial,pemetrexed,3,3,1,3,1452,67,0.086
+Colorectal,oxaliplatin,2,2,0,1,709,100,0.085
+Head & Neck,pemetrexed,2,2,0,0,800,100,0.085
+Endometrial,dostarlimab,2,1,2,1,640,100,0.085
+Glioma,nivolumab,2,2,1,2,480,100,0.085
+Head & Neck,cemiplimab,3,2,3,0,272,100,0.084
+Pancreatic,FOLFOXIRI,5,3,2,3,1841,40,0.083
+Pancreatic,pembrolizumab,4,4,3,0,365,75,0.082
+Colorectal,trastuzumab deruxtecan,2,1,2,0,579,100,0.082
+Colorectal,dostarlimab,3,1,3,1,267,100,0.082
+Glioma,cemiplimab,3,3,1,1,202,100,0.082
+Colorectal,atezolizumab,2,2,2,1,5058,50,0.081
+Renal,sunitinib,5,4,3,5,2122,20,0.081
+Endometrial,durvalumab,3,2,3,2,970,67,0.081
+Breast,durvalumab,2,2,2,0,363,100,0.081
+Liver,paclitaxel,2,2,1,2,310,100,0.081
+Head & Neck,FP,2,2,2,0,322,100,0.08
+Ovarian,cyclophosphamide,5,4,1,0,204,80,0.08
+Lung,erlotinib,3,2,2,2,1058,67,0.08
+Glioma,bevacizumab,4,4,1,2,277,75,0.08
+Colorectal,leucovorin,4,4,1,1,1360,50,0.079
+Lung,sacituzumab govitecan,2,1,2,0,385,100,0.079
+Liver,FOLFOXIRI,3,2,0,3,1074,67,0.079
+Pancreatic,atezolizumab,2,2,1,1,5122,50,0.079
+Breast,tucatinib,7,4,6,1,1069,14,0.078
+Liver,ipilimumab,2,2,1,0,264,100,0.077
+Breast,everolimus,6,5,4,4,1948,0,0.077
+Head & Neck,fluorouracil,3,3,1,0,912,67,0.077
+Neuroendocrine,FOLFIRI,2,2,0,1,271,100,0.077
+Head & Neck,nivolumab,3,3,1,1,5265,33,0.077
+Colorectal,s-1,5,4,0,1,1336,40,0.076
+Ovarian,nab-paclitaxel,3,2,0,2,837,67,0.075
+Lung,trastuzumab deruxtecan,2,2,2,0,187,100,0.075
+Melanoma,carboplatin,3,3,0,2,617,67,0.075
+Esophageal,tislelizumab,4,3,0,1,270,75,0.074
+Lung,ipilimumab,2,2,1,0,202,100,0.074
+Lung,trastuzumab,3,3,3,0,404,67,0.073
+Ovarian,niraparib,4,4,1,2,1947,25,0.072
+Renal,cyclophosphamide,2,2,0,0,180,100,0.072
+Ovarian,standard_of_care,3,3,0,3,2006,33,0.07
+Lung,cyclophosphamide,5,5,1,0,153,60,0.07
+Liver,cyclophosphamide,4,3,1,0,177,75,0.07
+Melanoma,cisplatin,3,3,0,1,355,67,0.069
+Gastric,sintilimab,2,2,0,0,142,100,0.069
+Melanoma,cyclophosphamide,4,4,0,0,120,75,0.068
+Glioma,cyclophosphamide,3,1,0,0,108,100,0.068
+Head & Neck,s-1,3,3,0,0,361,67,0.067
+Neuroendocrine,octreotide,5,5,1,5,1326,0,0.066
+Prostate,standard_of_care,5,3,3,3,2271,0,0.066
+Endometrial,cyclophosphamide,2,2,0,0,98,100,0.066
+Esophageal,fluorouracil,2,2,0,2,1153,50,0.066
+Lung,olaparib,2,2,2,1,936,50,0.066
+Endometrial,olaparib,2,1,2,2,850,50,0.064
+Esophageal,trastuzumab,2,2,1,1,960,50,0.064
+Esophageal,s-1,3,3,0,2,980,33,0.062
+Renal,ipilimumab,3,3,0,1,1009,33,0.061
+Prostate,cyclophosphamide,2,2,0,0,48,100,0.06
+Glioma,pembrolizumab,2,2,0,1,40,100,0.06
+Pancreatic,FOLFIRI,2,2,0,1,648,50,0.059
+Head & Neck,cabozantinib,2,2,2,2,5291,0,0.058
+Pancreatic,capecitabine,2,2,1,1,433,50,0.057
+Lung,sintilimab,2,2,0,1,477,50,0.057
+Liver,fluorouracil,4,4,1,0,481,25,0.056
+Sarcoma,dacarbazine,2,2,0,1,423,50,0.056
+Renal,pazopanib,2,2,0,1,443,50,0.056
+Lung,adagrasib,3,2,1,1,628,33,0.056
+Neuroendocrine,everolimus,4,3,0,4,1219,0,0.054
+Ovarian,s-1,3,3,0,0,592,33,0.054
+Liver,standard_of_care,2,2,0,2,266,50,0.053
+Prostate,olaparib,2,2,0,1,265,50,0.051
+Endometrial,s-1,2,2,0,0,274,50,0.05
+Prostate,lutetium lu 177,2,2,0,0,238,50,0.049
+Liver,s-1,3,3,1,2,1060,0,0.048
+Ovarian,fluorouracil,3,3,1,1,1257,0,0.048
+Glioma,fluorouracil,4,4,0,0,205,25,0.047
+Bladder,erdafitinib,4,2,4,0,604,0,0.046
+Pancreatic,fluorouracil,4,4,0,1,599,0,0.046
+Sarcoma,sunitinib,3,2,0,3,989,0,0.044
+Prostate,bicalutamide,2,2,0,1,1523,0,0.042
+Breast,goserelin,2,1,2,1,1428,0,0.042
+Renal,everolimus,2,2,1,2,1020,0,0.041
+Gastric,cyclophosphamide,2,2,0,0,96,50,0.041
+Lung,alectinib,2,2,0,2,1050,0,0.04
+Endometrial,lenvatinib,3,2,0,1,779,0,0.039
+Colorectal,cyclophosphamide,2,2,0,0,75,50,0.039
+Pancreatic,everolimus,2,2,0,2,778,0,0.037
+Neuroendocrine,lanreotide,2,2,0,2,670,0,0.036
+Lung,gefitinib,2,2,0,2,695,0,0.036
+Prostate,fluorouracil,2,2,0,1,596,0,0.034
+Renal,fluorouracil,2,2,1,0,652,0,0.034
+Melanoma,fluorouracil,2,2,1,0,612,0,0.034
+Prostate,s-1,3,2,0,0,434,0,0.033
+Sarcoma,temozolomide,3,3,2,0,194,0,0.032
+Breast,s-1,2,2,0,0,518,0,0.031
+Liver,FOLFOX,2,2,0,1,400,0,0.03
+Glioma,cisplatin,3,3,0,1,164,0,0.028
+Glioma,irinotecan,2,2,1,0,275,0,0.027
+Prostate,niraparib,2,1,2,0,272,0,0.026
+Gastric,tucatinib,3,2,3,0,119,0,0.026
+Liver,trastuzumab,2,1,2,0,257,0,0.025
+Liver,tucatinib,2,1,2,0,257,0,0.025
+Pancreatic,FOLFOX,2,2,0,0,273,0,0.025
+Sarcoma,irinotecan,2,2,2,0,174,0,0.025
+Liver,regorafenib,2,2,0,1,195,0,0.024
+Bladder,fluorouracil,2,2,0,0,190,0,0.022
+Lung,lorlatinib,2,2,1,0,124,0,0.02
+Renal,s-1,2,1,0,0,164,0,0.018
+Head & Neck,selpercatinib,2,1,2,0,113,0,0.018
+Breast,niraparib,2,1,2,1,77,0,0.016
+Colorectal,tucatinib,2,2,2,0,65,0,0.016
+Glioma,doxorubicin,2,1,0,0,20,0,0.0

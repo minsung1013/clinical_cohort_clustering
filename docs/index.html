@@ -10,8 +10,8 @@
   .lang{position:absolute;top:16px;right:18px;display:flex;border:1px solid #334155;border-radius:8px;overflow:hidden}
   .lang button{background:#1e293b;color:#94a3b8;border:0;padding:6px 11px;font-size:12px;cursor:pointer}
   .lang button.on{background:#2563eb;color:#fff}
-  .container{max-width:900px;margin:0 auto;padding:26px 22px 40px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .container{max-width:1140px;margin:0 auto;padding:26px 22px 40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
   .card{display:flex;flex-direction:column;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
         overflow:hidden;text-decoration:none;color:inherit;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,.12);border-color:#cbd5e1}
@@ -203,7 +203,7 @@
       </a></div></div>
 <footer id="foot"></footer>
 <script>
-const DATE="2026-09-19";
+const DATE="2026-09-20";
 const I18N={
  ko:{title:"임상 코호트 인텔리전스",
      desc:"진행 중인 항암 임상 코호트를 분석해, 공간전사체 + AI 종양미세환경(TME) 분석 관점에서 표준치료(B) 데이터 자산의 가치를 우선순위화합니다. 암종을 선택하세요.",

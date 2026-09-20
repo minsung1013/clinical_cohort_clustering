@@ -66,8 +66,8 @@ _PAGE = r"""<!doctype html>
   .lang{position:absolute;top:16px;right:18px;display:flex;border:1px solid #334155;border-radius:8px;overflow:hidden}
   .lang button{background:#1e293b;color:#94a3b8;border:0;padding:6px 11px;font-size:12px;cursor:pointer}
   .lang button.on{background:#2563eb;color:#fff}
-  .container{max-width:900px;margin:0 auto;padding:26px 22px 40px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .container{max-width:1140px;margin:0 auto;padding:26px 22px 40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
   .card{display:flex;flex-direction:column;background:#fff;border:1px solid #e5e7eb;border-radius:14px;
         overflow:hidden;text-decoration:none;color:inherit;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,.12);border-color:#cbd5e1}
