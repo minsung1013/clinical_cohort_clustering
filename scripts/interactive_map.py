@@ -142,6 +142,7 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
 _TEMPLATE = r"""<!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title id="ttl"></title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
   *{box-sizing:border-box}
   html,body{height:100%;margin:0}
@@ -180,6 +181,14 @@ _TEMPLATE = r"""<!doctype html>
   .big{background:#111827;color:#fff;border-radius:4px;font-size:10px;padding:1px 6px;margin-left:6px}
   details.sum{margin-top:6px}details.sum summary{font-size:11.5px;color:#2563eb;font-weight:500}
   details.sum p{font-size:11.5px;color:#475569;margin:5px 0 0;line-height:1.45}
+  .exbar{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:1px 2px 9px;border-bottom:1px solid #eef2f7;margin-bottom:8px;flex-wrap:wrap}
+  .exbar label{font-size:12px;color:#334155;display:flex;align-items:center;gap:5px;cursor:pointer}
+  .exbar .muted{font-size:11.5px}
+  .exbtns{margin-left:auto;display:flex;gap:6px}
+  .exbtns button{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:7px;font-size:12px;padding:5px 10px;cursor:pointer}
+  .exbtns button:hover{background:#eef2ff;border-color:#a5b4fc}
+  .card{position:relative;padding-right:30px}
+  .card .ck{position:absolute;top:11px;right:11px;width:16px;height:16px;cursor:pointer;margin:0}
 </style></head>
 <body>
 <header>
@@ -195,7 +204,14 @@ _TEMPLATE = r"""<!doctype html>
   <div class="map">__FIG__</div>
   <div class="side">
     <div class="panel clusters"><details open><summary id="cl_head"></summary><div id="clusters"></div></details></div>
-    <div class="panel cards"><div id="cards"></div></div>
+    <div class="panel cards">
+      <div class="exbar">
+        <label><input type="checkbox" id="selall"> <span id="lbl_selall"></span></label>
+        <span class="muted" id="selcount"></span>
+        <span class="exbtns"><button id="exCsv"></button><button id="exXlsx"></button></span>
+      </div>
+      <div id="cards"></div>
+    </div>
   </div>
 </div>
 <script>
@@ -212,7 +228,9 @@ const I18N={
      hint:"상단에서 제약사를 선택하거나 맵의 점을 클릭하세요.",
      reg:"표준치료 레지멘(B)", A:"실험약(A)", target:"타겟", modality:"모달리티",
      bio:"바이오마커(선택)", elig_sum:"선정기준(요약)", spon:"스폰서", start:"시작", pcd:"1차완료(예정)",
-     summary:"연구 요약", elig:"선정기준(발췌)", trials:n=>`${n}건`, scale:"R&D 규모"},
+     summary:"연구 요약", elig:"선정기준(발췌)", trials:n=>`${n}건`, scale:"R&D 규모",
+     selall:"현재 목록 전체 선택", seln:n=>`${n}개 선택됨`, csv:"CSV 내려받기", xlsx:"Excel 내려받기",
+     nosel:"선택된 임상이 없습니다.", noxlsx:"Excel 라이브러리를 불러오지 못했습니다(인터넷 연결 확인). CSV로 받아주세요."},
  en:{cancer:CE, title:c=>`${c} clinical-cohort dashboard`,
      sub:c=>`Ongoing ${c} · industry-sponsored · standard-of-care cohorts (color=cluster · opacity=phase · size=R&D scale · outline=big pharma)`,
      sponsor:"Sponsor", all:"— Show all —", reset:"Reset",
@@ -220,15 +238,20 @@ const I18N={
      hint:"Select a sponsor above, or click a point on the map.",
      reg:"Standard-of-care regimen (B)", A:"Experimental (A)", target:"Target", modality:"Modality",
      bio:"Biomarker (selection)", elig_sum:"Eligibility (summary)", spon:"Sponsor", start:"Start", pcd:"Primary completion (est.)",
-     summary:"Study summary", elig:"Eligibility (excerpt)", trials:n=>`${n} trial${n>1?'s':''}`, scale:"R&D"}
+     summary:"Study summary", elig:"Eligibility (excerpt)", trials:n=>`${n} trial${n>1?'s':''}`, scale:"R&D",
+     selall:"Select all shown", seln:n=>`${n} selected`, csv:"Download CSV", xlsx:"Download Excel",
+     nosel:"No trials selected.", noxlsx:"Excel library failed to load (check your connection). Please use CSV."}
 };
 let lang=localStorage.getItem('lang')||'ko', T=I18N[lang];
 let view={type:'none'};
+const SEL=new Set();   // selected NCTs (persists across sponsor/cluster views)
+let shown=[];          // trials in the current card list (target of "select all")
 
 function fmt(s){return s&&s!=='nan'?s:'—';}
 function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
   const reg=t.regimen+(t.add&&!['chemo only','—','-','backbone only'].includes(t.add)?' + '+t.add:'');
   return `<div class="card" style="border-left-color:${CC[t.cluster]||'#ccc'}">
+    <input type="checkbox" class="ck" data-nct="${t.nct}"${SEL.has(t.nct)?' checked':''}>
     <a href="${url}" target="_blank"><b>${t.nct}</b> ↗</a>${t.big?'<span class="big">★ big pharma</span>':''}
     <div class="title">${t.title}</div>
     <div class="row"><span class="chip ph">${t.phase}</span><span class="chip st">${t.status}</span>
@@ -243,7 +266,28 @@ function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
     ${t.summary?`<details class="sum"><summary>${T.summary}</summary><p>${t.summary}</p></details>`:''}
     ${t.eligibility?`<details class="sum"><summary>${T.elig}</summary><p>${t.eligibility}</p></details>`:''}
   </div>`;}
-function renderCards(ts,head){document.getElementById('cards').innerHTML=`<div class="cnt">${head}</div>`+(ts.length?ts.map(card).join(''):`<div class="muted">—</div>`);}
+function renderCards(ts,head){shown=ts.slice();document.getElementById('cards').innerHTML=`<div class="cnt">${head}</div>`+(ts.length?ts.map(card).join(''):`<div class="muted">—</div>`);syncSel();}
+function syncSel(){document.getElementById('selcount').textContent=T.seln(SEL.size);
+  const sa=document.getElementById('selall'),vis=shown.filter(t=>SEL.has(t.nct)).length;
+  sa.checked=shown.length>0&&vis===shown.length;sa.indeterminate=vis>0&&vis<shown.length;}
+const EXCOLS=[["nct","NCT"],["title","Title"],["phase","Phase"],["status","Status"],["cluster","Cluster"],
+  ["B","StandardOfCare_B"],["A","Experimental_A"],["regimen","Regimen"],["add","Regimen_add"],
+  ["targets","Targets"],["modalities","Modalities"],["tme","TME_relevant"],["bio","Biomarker"],
+  ["elig_sum","Eligibility_summary"],["sponsor","Sponsor"],["big","BigPharma"],["scale","Sponsor_RnD_scale"],
+  ["enroll","Enrollment"],["start","Start"],["pcd","PrimaryCompletion"],["url","URL"]];
+function selectedRows(){const rows=[];TRIALS.forEach(t=>{if(!SEL.has(t.nct))return;const o={};
+  EXCOLS.forEach(([k,h])=>{o[h]=k==='url'?('https://clinicaltrials.gov/study/'+t.nct):(t[k]??'');});rows.push(o);});return rows;}
+function toCSV(rows){const hs=Object.keys(rows[0]);
+  const esc=v=>{v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+  return hs.join(',')+'\n'+rows.map(r=>hs.map(h=>esc(r[h])).join(',')).join('\n');}
+function fname(ext){return `${CE.replace(/[^A-Za-z0-9]+/g,'_')}_cohorts_${new Date().toISOString().slice(0,10)}.${ext}`;}
+function dl(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+function exportCSV(){const rows=selectedRows();if(!rows.length){alert(T.nosel);return;}
+  dl(new Blob(['﻿'+toCSV(rows)],{type:'text/csv;charset=utf-8;'}),fname('csv'));}
+function exportXLSX(){const rows=selectedRows();if(!rows.length){alert(T.nosel);return;}
+  if(typeof XLSX==='undefined'){alert(T.noxlsx);return;}
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rows),'cohorts');
+  XLSX.writeFile(wb,fname('xlsx'));}
 function renderClusters(){document.getElementById('clusters').innerHTML='';
   CLUSTERS.forEach(c=>{const d=document.createElement('div');d.className='clu';
     d.innerHTML=`<span class="dot" style="background:${c.color}"></span>
@@ -277,12 +321,22 @@ function applyLang(l){lang=l;T=I18N[l];localStorage.setItem('lang',l);
   document.getElementById('lbl_sponsor').textContent=T.sponsor;
   document.getElementById('reset').textContent=T.reset;
   document.getElementById('cl_head').textContent=T.clusters;
+  document.getElementById('lbl_selall').textContent=T.selall;
+  document.getElementById('exCsv').textContent=T.csv;
+  document.getElementById('exXlsx').textContent=T.xlsx;
   rebuildSelect();renderClusters();rerender();}
 
 document.getElementById('ko').onclick=()=>applyLang('ko');
 document.getElementById('en').onclick=()=>applyLang('en');
 document.getElementById('company').addEventListener('change',e=>showCompany(e.target.value));
 document.getElementById('reset').addEventListener('click',()=>{document.getElementById('company').value='__ALL__';showCompany('__ALL__');});
+document.getElementById('cards').addEventListener('change',e=>{if(!e.target.classList.contains('ck'))return;
+  const n=e.target.dataset.nct;e.target.checked?SEL.add(n):SEL.delete(n);syncSel();});
+document.getElementById('selall').addEventListener('change',e=>{
+  shown.forEach(t=>e.target.checked?SEL.add(t.nct):SEL.delete(t.nct));
+  document.querySelectorAll('#cards .ck').forEach(c=>c.checked=SEL.has(c.dataset.nct));syncSel();});
+document.getElementById('exCsv').addEventListener('click',exportCSV);
+document.getElementById('exXlsx').addEventListener('click',exportXLSX);
 if(gd&&gd.on){gd.on('plotly_click',ev=>{const nct=ev.points[0].customdata?ev.points[0].customdata[0]:null;if(!nct)return;
   const t=TRIALS.find(x=>x.nct===nct);if(!t)return;view={type:'trial',nct};
   document.getElementById('company').value=t.sponsor;highlight([[t.x,t.y]]);renderCards([t],`${t.nct} · ${t.sponsor}`);

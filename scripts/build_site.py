@@ -4,9 +4,12 @@ Scans outputs/ for cohort_map_<slug>.html (dashboards), copies them + report +
 thumbnail into docs/, then generates docs/index.html (KO/EN nav with a language
 toggle). Deploy: GitHub Pages (main branch /docs) or drag docs/ to Netlify Drop.
 """
+import json
 import shutil
 from datetime import date
 from pathlib import Path
+
+import pandas as pd
 
 from cancer_config import CONFIGS
 
@@ -14,8 +17,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "outputs"
 SITE = ROOT / "docs"  # GitHub Pages serves main branch /docs
 
-# slug -> (korean, english) display names
+# slug -> (korean, english) display names; english name -> korean
 SLUG_NAMES = {c["slug"]: (c["title"].split("(")[0].strip(), name) for name, c in CONFIGS.items()}
+KO_OF = {name: c["title"].split("(")[0].strip() for name, c in CONFIGS.items()}
 
 
 def cards():
