@@ -181,14 +181,16 @@ _TEMPLATE = r"""<!doctype html>
   .big{background:#111827;color:#fff;border-radius:4px;font-size:10px;padding:1px 6px;margin-left:6px}
   details.sum{margin-top:6px}details.sum summary{font-size:11.5px;color:#2563eb;font-weight:500}
   details.sum p{font-size:11.5px;color:#475569;margin:5px 0 0;line-height:1.45}
-  .exbar{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:1px 2px 9px;border-bottom:1px solid #eef2f7;margin-bottom:8px;flex-wrap:wrap}
-  .exbar label{font-size:12px;color:#334155;display:flex;align-items:center;gap:5px;cursor:pointer}
-  .exbar .muted{font-size:11.5px}
+  .exbar{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:1px 2px 9px;border-bottom:1px solid #eef2f7;margin-bottom:8px;flex-wrap:wrap}
+  .exbar .wlc{font-size:12px;color:#92400e;font-weight:600}
+  .exbar button{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:7px;font-size:12px;padding:5px 10px;cursor:pointer}
+  .exbar button:hover{background:#eef2ff;border-color:#a5b4fc}
   .exbtns{margin-left:auto;display:flex;gap:6px}
-  .exbtns button{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:7px;font-size:12px;padding:5px 10px;cursor:pointer}
-  .exbtns button:hover{background:#eef2ff;border-color:#a5b4fc}
-  .card{position:relative;padding-right:30px}
-  .card .ck{position:absolute;top:11px;right:11px;width:16px;height:16px;cursor:pointer;margin:0}
+  .card{position:relative;padding-right:32px}
+  .card.wl{background:#fffbeb;border-color:#fcd34d}
+  .card .star{position:absolute;top:8px;right:9px;font-size:18px;line-height:1;cursor:pointer;color:#cbd5e1;background:none;border:0;padding:2px}
+  .card .star.on{color:#f59e0b}
+  .card .star:hover{color:#f59e0b}
 </style></head>
 <body>
 <header>
@@ -206,8 +208,9 @@ _TEMPLATE = r"""<!doctype html>
     <div class="panel clusters"><details open><summary id="cl_head"></summary><div id="clusters"></div></details></div>
     <div class="panel cards">
       <div class="exbar">
-        <label><input type="checkbox" id="selall"> <span id="lbl_selall"></span></label>
-        <span class="muted" id="selcount"></span>
+        <span class="wlc" id="wlcount"></span>
+        <button id="wlView"></button>
+        <button id="wlClear"></button>
         <span class="exbtns"><button id="exCsv"></button><button id="exXlsx"></button></span>
       </div>
       <div id="cards"></div>
@@ -225,33 +228,41 @@ const I18N={
      sub:c=>`진행 중 ${c} · 제약사 주도 · 표준치료 코호트 (색=클러스터 · 투명도=Phase · 크기=R&D 규모 · 테두리=빅파마)`,
      sponsor:"제약사", all:"— 전체 보기 —", reset:"초기화",
      clusters:"클러스터 개요 (표준치료 아키타입)", rep:"대표", near:"(빅파마 없음·최근접)",
-     hint:"상단에서 제약사를 선택하거나 맵의 점을 클릭하세요.",
+     hint:"상단에서 제약사를 선택하거나 맵의 점을 클릭하세요. 카드를 우클릭(또는 ☆ 클릭)하면 관심 목록에 담깁니다.",
      reg:"표준치료 레지멘(B)", A:"실험약(A)", target:"타겟", modality:"모달리티",
      bio:"바이오마커(선택)", elig_sum:"선정기준(요약)", spon:"스폰서", start:"시작", pcd:"1차완료(예정)",
      summary:"연구 요약", elig:"선정기준(발췌)", trials:n=>`${n}건`, scale:"R&D 규모",
-     selall:"현재 목록 전체 선택", seln:n=>`${n}개 선택됨`, csv:"CSV 내려받기", xlsx:"Excel 내려받기",
-     nosel:"선택된 임상이 없습니다.", noxlsx:"Excel 라이브러리를 불러오지 못했습니다(인터넷 연결 확인). CSV로 받아주세요."},
+     wln:n=>`⭐ 관심 목록 ${n}개`, wlview:"관심목록 보기", wlclear:"비우기",
+     csv:"CSV 내려받기", xlsx:"Excel 내려받기",
+     wlhead:n=>`⭐ 관심 목록 — ${n}건`,
+     nosel:"관심 목록이 비어 있습니다. 카드를 우클릭하거나 ☆를 눌러 담으세요.",
+     noxlsx:"Excel 라이브러리를 불러오지 못했습니다(인터넷 연결 확인). CSV로 받아주세요."},
  en:{cancer:CE, title:c=>`${c} clinical-cohort dashboard`,
      sub:c=>`Ongoing ${c} · industry-sponsored · standard-of-care cohorts (color=cluster · opacity=phase · size=R&D scale · outline=big pharma)`,
      sponsor:"Sponsor", all:"— Show all —", reset:"Reset",
      clusters:"Cluster overview (standard-of-care archetypes)", rep:"Rep", near:"(no big pharma · nearest)",
-     hint:"Select a sponsor above, or click a point on the map.",
+     hint:"Select a sponsor above, or click a point on the map. Right-click a card (or click ☆) to add it to your watchlist.",
      reg:"Standard-of-care regimen (B)", A:"Experimental (A)", target:"Target", modality:"Modality",
      bio:"Biomarker (selection)", elig_sum:"Eligibility (summary)", spon:"Sponsor", start:"Start", pcd:"Primary completion (est.)",
      summary:"Study summary", elig:"Eligibility (excerpt)", trials:n=>`${n} trial${n>1?'s':''}`, scale:"R&D",
-     selall:"Select all shown", seln:n=>`${n} selected`, csv:"Download CSV", xlsx:"Download Excel",
-     nosel:"No trials selected.", noxlsx:"Excel library failed to load (check your connection). Please use CSV."}
+     wln:n=>`⭐ Watchlist: ${n}`, wlview:"View watchlist", wlclear:"Clear",
+     csv:"Download CSV", xlsx:"Download Excel",
+     wlhead:n=>`⭐ Watchlist — ${n} trial${n>1?'s':''}`,
+     nosel:"Watchlist is empty. Right-click a card or click ☆ to add trials.",
+     noxlsx:"Excel library failed to load (check your connection). Please use CSV."}
 };
 let lang=localStorage.getItem('lang')||'ko', T=I18N[lang];
 let view={type:'none'};
-const SEL=new Set();   // selected NCTs (persists across sponsor/cluster views)
-let shown=[];          // trials in the current card list (target of "select all")
+const WKEY='watch_'+CE;   // watchlist (관심 목록) persisted per cancer
+const WATCH=new Set(JSON.parse(localStorage.getItem(WKEY)||'[]'));
+function saveWatch(){localStorage.setItem(WKEY,JSON.stringify([...WATCH]));}
 
 function fmt(s){return s&&s!=='nan'?s:'—';}
 function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
   const reg=t.regimen+(t.add&&!['chemo only','—','-','backbone only'].includes(t.add)?' + '+t.add:'');
-  return `<div class="card" style="border-left-color:${CC[t.cluster]||'#ccc'}">
-    <input type="checkbox" class="ck" data-nct="${t.nct}"${SEL.has(t.nct)?' checked':''}>
+  const on=WATCH.has(t.nct);
+  return `<div class="card${on?' wl':''}" data-nct="${t.nct}" style="border-left-color:${CC[t.cluster]||'#ccc'}">
+    <button class="star${on?' on':''}" data-nct="${t.nct}" title="관심 목록 / watchlist">${on?'★':'☆'}</button>
     <a href="${url}" target="_blank"><b>${t.nct}</b> ↗</a>${t.big?'<span class="big">★ big pharma</span>':''}
     <div class="title">${t.title}</div>
     <div class="row"><span class="chip ph">${t.phase}</span><span class="chip st">${t.status}</span>
@@ -266,25 +277,48 @@ function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
     ${t.summary?`<details class="sum"><summary>${T.summary}</summary><p>${t.summary}</p></details>`:''}
     ${t.eligibility?`<details class="sum"><summary>${T.elig}</summary><p>${t.eligibility}</p></details>`:''}
   </div>`;}
-function renderCards(ts,head){shown=ts.slice();document.getElementById('cards').innerHTML=`<div class="cnt">${head}</div>`+(ts.length?ts.map(card).join(''):`<div class="muted">—</div>`);syncSel();}
-function syncSel(){document.getElementById('selcount').textContent=T.seln(SEL.size);
-  const sa=document.getElementById('selall'),vis=shown.filter(t=>SEL.has(t.nct)).length;
-  sa.checked=shown.length>0&&vis===shown.length;sa.indeterminate=vis>0&&vis<shown.length;}
+function renderCards(ts,head){document.getElementById('cards').innerHTML=`<div class="cnt">${head}</div>`+(ts.length?ts.map(card).join(''):`<div class="muted">—</div>`);}
+function syncWatchUI(){document.getElementById('wlcount').textContent=T.wln(WATCH.size);}
+
+// --- watchlist (관심 목록 / cart) ---
+let WLI=null;   // plotly trace index for watchlist star markers
+function initWatchTrace(){
+  if(!window.Plotly||!gd||!gd.data){setTimeout(initWatchTrace,200);return;}
+  WLI=gd.data.length;
+  Plotly.addTraces('map',{x:[],y:[],mode:'markers',name:'watch',
+    marker:{symbol:'star',size:15,color:'#f59e0b',line:{width:1.3,color:'#7c2d12'}},
+    hoverinfo:'skip',showlegend:false}).then(updateWatchMap);
+}
+function updateWatchMap(){if(WLI==null)return;const p=TRIALS.filter(t=>WATCH.has(t.nct));
+  Plotly.restyle('map',{x:[p.map(t=>t.x)],y:[p.map(t=>t.y)]},[WLI]);}
+function showWatch(){view={type:'watch'};const ts=TRIALS.filter(t=>WATCH.has(t.nct)).sort((a,b)=>a.cluster-b.cluster);
+  highlight(ts.map(t=>[t.x,t.y]));renderCards(ts,T.wlhead(ts.length));}
+function toggleWatch(nct){if(WATCH.has(nct))WATCH.delete(nct);else WATCH.add(nct);
+  saveWatch();updateWatchMap();syncWatchUI();
+  const c=document.querySelector(`#cards .card[data-nct="${nct}"]`);
+  if(c){const on=WATCH.has(nct);c.classList.toggle('wl',on);
+    const b=c.querySelector('.star');if(b){b.classList.toggle('on',on);b.textContent=on?'★':'☆';}}
+  if(view.type==='watch')showWatch();}
+function clearWatch(){if(!WATCH.size)return;WATCH.clear();saveWatch();updateWatchMap();syncWatchUI();
+  if(view.type==='watch')showWatch();
+  else document.querySelectorAll('#cards .card').forEach(c=>{c.classList.remove('wl');
+    const b=c.querySelector('.star');if(b){b.classList.remove('on');b.textContent='☆';}});}
+
 const EXCOLS=[["nct","NCT"],["title","Title"],["phase","Phase"],["status","Status"],["cluster","Cluster"],
   ["B","StandardOfCare_B"],["A","Experimental_A"],["regimen","Regimen"],["add","Regimen_add"],
   ["targets","Targets"],["modalities","Modalities"],["tme","TME_relevant"],["bio","Biomarker"],
   ["elig_sum","Eligibility_summary"],["sponsor","Sponsor"],["big","BigPharma"],["scale","Sponsor_RnD_scale"],
   ["enroll","Enrollment"],["start","Start"],["pcd","PrimaryCompletion"],["url","URL"]];
-function selectedRows(){const rows=[];TRIALS.forEach(t=>{if(!SEL.has(t.nct))return;const o={};
+function watchRows(){const rows=[];TRIALS.forEach(t=>{if(!WATCH.has(t.nct))return;const o={};
   EXCOLS.forEach(([k,h])=>{o[h]=k==='url'?('https://clinicaltrials.gov/study/'+t.nct):(t[k]??'');});rows.push(o);});return rows;}
 function toCSV(rows){const hs=Object.keys(rows[0]);
   const esc=v=>{v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
   return hs.join(',')+'\n'+rows.map(r=>hs.map(h=>esc(r[h])).join(',')).join('\n');}
 function fname(ext){return `${CE.replace(/[^A-Za-z0-9]+/g,'_')}_cohorts_${new Date().toISOString().slice(0,10)}.${ext}`;}
 function dl(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
-function exportCSV(){const rows=selectedRows();if(!rows.length){alert(T.nosel);return;}
+function exportCSV(){const rows=watchRows();if(!rows.length){alert(T.nosel);return;}
   dl(new Blob(['﻿'+toCSV(rows)],{type:'text/csv;charset=utf-8;'}),fname('csv'));}
-function exportXLSX(){const rows=selectedRows();if(!rows.length){alert(T.nosel);return;}
+function exportXLSX(){const rows=watchRows();if(!rows.length){alert(T.nosel);return;}
   if(typeof XLSX==='undefined'){alert(T.noxlsx);return;}
   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rows),'cohorts');
   XLSX.writeFile(wb,fname('xlsx'));}
@@ -309,6 +343,7 @@ function showCompany(name){view={type:'company',name};
 function rerender(){if(view.type==='company')showCompany(view.name);
   else if(view.type==='cluster'){const ts=TRIALS.filter(x=>x.cluster===view.id).sort((a,b)=>b.scale-a.scale);renderCards(ts,`C${view.id} — ${T.trials(ts.length)}`);}
   else if(view.type==='trial'){const t=TRIALS.find(x=>x.nct===view.nct);if(t)renderCards([t],`${t.nct} · ${t.sponsor}`);}
+  else if(view.type==='watch')showWatch();
   else renderCards([],T.hint);}
 
 function applyLang(l){lang=l;T=I18N[l];localStorage.setItem('lang',l);
@@ -321,20 +356,22 @@ function applyLang(l){lang=l;T=I18N[l];localStorage.setItem('lang',l);
   document.getElementById('lbl_sponsor').textContent=T.sponsor;
   document.getElementById('reset').textContent=T.reset;
   document.getElementById('cl_head').textContent=T.clusters;
-  document.getElementById('lbl_selall').textContent=T.selall;
+  document.getElementById('wlView').textContent=T.wlview;
+  document.getElementById('wlClear').textContent=T.wlclear;
   document.getElementById('exCsv').textContent=T.csv;
   document.getElementById('exXlsx').textContent=T.xlsx;
-  rebuildSelect();renderClusters();rerender();}
+  syncWatchUI();rebuildSelect();renderClusters();rerender();}
 
 document.getElementById('ko').onclick=()=>applyLang('ko');
 document.getElementById('en').onclick=()=>applyLang('en');
 document.getElementById('company').addEventListener('change',e=>showCompany(e.target.value));
 document.getElementById('reset').addEventListener('click',()=>{document.getElementById('company').value='__ALL__';showCompany('__ALL__');});
-document.getElementById('cards').addEventListener('change',e=>{if(!e.target.classList.contains('ck'))return;
-  const n=e.target.dataset.nct;e.target.checked?SEL.add(n):SEL.delete(n);syncSel();});
-document.getElementById('selall').addEventListener('change',e=>{
-  shown.forEach(t=>e.target.checked?SEL.add(t.nct):SEL.delete(t.nct));
-  document.querySelectorAll('#cards .ck').forEach(c=>c.checked=SEL.has(c.dataset.nct));syncSel();});
+document.getElementById('cards').addEventListener('click',e=>{const b=e.target.closest('.star');if(!b)return;
+  e.preventDefault();toggleWatch(b.dataset.nct);});
+document.getElementById('cards').addEventListener('contextmenu',e=>{const c=e.target.closest('.card');if(!c)return;
+  e.preventDefault();toggleWatch(c.dataset.nct);});
+document.getElementById('wlView').addEventListener('click',showWatch);
+document.getElementById('wlClear').addEventListener('click',clearWatch);
 document.getElementById('exCsv').addEventListener('click',exportCSV);
 document.getElementById('exXlsx').addEventListener('click',exportXLSX);
 if(gd&&gd.on){gd.on('plotly_click',ev=>{const nct=ev.points[0].customdata?ev.points[0].customdata[0]:null;if(!nct)return;
@@ -342,5 +379,6 @@ if(gd&&gd.on){gd.on('plotly_click',ev=>{const nct=ev.points[0].customdata?ev.poi
   document.getElementById('company').value=t.sponsor;highlight([[t.x,t.y]]);renderCards([t],`${t.nct} · ${t.sponsor}`);
   document.getElementById('cards').scrollTop=0;});}
 applyLang(lang);
+initWatchTrace();
 </script>
 </body></html>"""
