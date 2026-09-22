@@ -37,6 +37,18 @@ def _load_extra():
     return ex
 
 
+_LINKS = None
+
+
+def _load_links():
+    """nct -> [linked publications/abstracts] from data/nct_links.json (may be absent)."""
+    global _LINKS
+    if _LINKS is None:
+        p = Path(__file__).resolve().parent.parent / "data" / "nct_links.json"
+        _LINKS = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    return _LINKS
+
+
 def _build_fig(dfp, hexcol):
     scale = dfp.sponsor_scale.fillna(1).clip(lower=1)
     smin, smax = np.sqrt(scale.min()), np.sqrt(scale.max())
@@ -127,6 +139,9 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
     companies = [{"name": r.lead_sponsor, "scale": int(r.scale), "n": int(r.n), "big": int(r.big)}
                  for _, r in comp.iterrows() if pd.notna(r.lead_sponsor)]
 
+    links_all = _load_links()
+    nct_links = {t["nct"]: links_all[t["nct"]] for t in trials if t["nct"] in links_all}
+
     ko = CFG["title"].split("(")[0].strip()
     en = CFG["name"]
     html = (_TEMPLATE
@@ -134,7 +149,8 @@ def build_interactive(df, rep_tbl, palette, bm_cols, out_path):
             .replace("__FIG__", fig_div).replace("__HL__", str(hl_index))
             .replace("__TRIALS__", json.dumps(trials, ensure_ascii=False))
             .replace("__CLUSTERS__", json.dumps(clusters, ensure_ascii=False))
-            .replace("__COMPANIES__", json.dumps(companies, ensure_ascii=False)))
+            .replace("__COMPANIES__", json.dumps(companies, ensure_ascii=False))
+            .replace("__NCTLINKS__", json.dumps(nct_links, ensure_ascii=False)))
     Path(out_path).write_text(html, encoding="utf-8")
     return out_path
 
@@ -191,6 +207,12 @@ _TEMPLATE = r"""<!doctype html>
   .card .star{position:absolute;top:8px;right:9px;font-size:18px;line-height:1;cursor:pointer;color:#cbd5e1;background:none;border:0;padding:2px}
   .card .star.on{color:#f59e0b}
   .card .star:hover{color:#f59e0b}
+  details.lnk summary{font-size:11.5px;color:#0369a1;font-weight:600}
+  .lrow{font-size:11.5px;margin:5px 0 0;line-height:1.4}
+  .lrow a{color:#2563eb}
+  .lchip{display:inline-block;border-radius:4px;font-size:9.5px;font-weight:600;padding:0 5px;margin-right:5px;vertical-align:middle}
+  .lchip.pub{background:#dcfce7;color:#166534}
+  .lchip.abs{background:#fef9c3;color:#854d0e}
 </style></head>
 <body>
 <header>
@@ -219,6 +241,7 @@ _TEMPLATE = r"""<!doctype html>
 </div>
 <script>
 const TRIALS=__TRIALS__, CLUSTERS=__CLUSTERS__, COMPANIES=__COMPANIES__;
+const NCTLINKS=__NCTLINKS__;   // nct -> [{type:'pub'|'abs', title, venue, year, url}]
 const HL=__HL__, CK="__CANCER_KO__", CE="__CANCER_EN__";
 const CC={}; CLUSTERS.forEach(c=>CC[c.id]=c.color);
 const gd=document.getElementById('map');
@@ -235,6 +258,7 @@ const I18N={
      wln:n=>`⭐ 관심 목록 ${n}개`, wlview:"관심목록 보기", wlclear:"비우기",
      csv:"CSV 내려받기", xlsx:"Excel 내려받기",
      wlhead:n=>`⭐ 관심 목록 — ${n}건`,
+     papers:n=>`📄 관련 논문·초록 ${n}건`, lpub:"논문", labs:"초록",
      nosel:"관심 목록이 비어 있습니다. 카드를 우클릭하거나 ☆를 눌러 담으세요.",
      noxlsx:"Excel 라이브러리를 불러오지 못했습니다(인터넷 연결 확인). CSV로 받아주세요."},
  en:{cancer:CE, title:c=>`${c} clinical-cohort dashboard`,
@@ -248,6 +272,7 @@ const I18N={
      wln:n=>`⭐ Watchlist: ${n}`, wlview:"View watchlist", wlclear:"Clear",
      csv:"Download CSV", xlsx:"Download Excel",
      wlhead:n=>`⭐ Watchlist — ${n} trial${n>1?'s':''}`,
+     papers:n=>`📄 Publications & abstracts (${n})`, lpub:"Paper", labs:"Abstract",
      nosel:"Watchlist is empty. Right-click a card or click ☆ to add trials.",
      noxlsx:"Excel library failed to load (check your connection). Please use CSV."}
 };
@@ -276,7 +301,13 @@ function card(t){const url='https://clinicaltrials.gov/study/'+t.nct;
     <div class="row muted">${T.start} ${fmt(t.start)} · ${T.pcd} ${fmt(t.pcd)}</div>
     ${t.summary?`<details class="sum"><summary>${T.summary}</summary><p>${t.summary}</p></details>`:''}
     ${t.eligibility?`<details class="sum"><summary>${T.elig}</summary><p>${t.eligibility}</p></details>`:''}
+    ${linksSection(t.nct)}
   </div>`;}
+function linksSection(nct){const ls=NCTLINKS[nct]||[];if(!ls.length)return'';
+  const item=l=>{const lab=l.type==='pub'?T.lpub:T.labs;
+    const head=l.url?`<a href="${l.url}" target="_blank">${l.title||'(제목 없음)'} ↗</a>`:`<span>${l.title||'(제목 없음)'}</span>`;
+    return `<div class="lrow"><span class="lchip ${l.type}">${lab}</span>${head} <span class="muted">· ${l.venue} ${l.year}</span></div>`;};
+  return `<details class="sum lnk"><summary>${T.papers(ls.length)}</summary>${ls.map(item).join('')}</details>`;}
 function renderCards(ts,head){document.getElementById('cards').innerHTML=`<div class="cnt">${head}</div>`+(ts.length?ts.map(card).join(''):`<div class="muted">—</div>`);}
 function syncWatchUI(){document.getElementById('wlcount').textContent=T.wln(WATCH.size);}
 

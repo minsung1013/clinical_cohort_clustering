@@ -16,8 +16,13 @@ scripts/enrich_ctgov.py      CT.gov API v2 전량 수집(캐시 data/raw_ctgov/)
 scripts/drug_normalize.py    약물 정규화·레지멘(FOLFOX/FLOT/SOX/FP/XP…)·빅파마·TME·SoC 계열
 scripts/extract_comparator.py arm type 기반 대조군 B 추출 + feature → data/cohorts_<slug>_features.csv
 scripts/_build_notebook.py   분석 노트북 생성 → notebooks/cohort_analysis_<slug>.ipynb
-scripts/interactive_map.py   인터랙티브 HTML 대시보드 빌더(제약사 드롭다운·하이라이트·상세카드)
+scripts/interactive_map.py   인터랙티브 HTML 대시보드 빌더(제약사 드롭다운·하이라이트·상세카드·관심목록·export)
+scripts/build_nct_links.py   NCT→논문/학회초록 연결맵 생성 → data/nct_links.json (oncology R2 코퍼스 기반)
 ```
+
+## 대시보드 기능
+- **관심 목록(장바구니)**: 카드 우클릭(또는 ☆)으로 담기 → 맵에 금색 별 표시, localStorage 저장, CSV/Excel export
+- **관련 논문·초록**: 각 임상 카드에 연결된 논문(PubMed)·학회 초록(DOI) 표시. `build_nct_links.py`로 `data/nct_links.json` 생성 후 `interactive_map.py`가 대시보드에 임베드
 
 ## 실행 (예: 위암)
 ```bash
