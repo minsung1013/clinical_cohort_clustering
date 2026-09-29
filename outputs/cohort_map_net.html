@@ -76,6 +76,7 @@
       <div class="exbar">
         <span class="wlc" id="wlcount"></span>
         <button id="wlView"></button>
+        <button id="wlAll"></button>
         <button id="wlClear"></button>
         <span class="exbtns"><button id="exCsv"></button><button id="exXlsx"></button></span>
       </div>
@@ -99,7 +100,7 @@ const I18N={
      reg:"표준치료 레지멘(B)", A:"실험약(A)", target:"타겟", modality:"모달리티",
      bio:"바이오마커(선택)", elig_sum:"선정기준(요약)", spon:"스폰서", start:"시작", pcd:"1차완료(예정)",
      summary:"연구 요약", elig:"선정기준(발췌)", trials:n=>`${n}건`, scale:"R&D 규모",
-     wln:n=>`⭐ 관심 목록 ${n}개`, wlview:"관심목록 보기", wlclear:"비우기",
+     wln:n=>`⭐ 관심 목록 ${n}개`, wlview:"관심목록 보기", wlall:"전체 선택", wlclear:"비우기",
      csv:"CSV 내려받기", xlsx:"Excel 내려받기",
      wlhead:n=>`⭐ 관심 목록 — ${n}건`,
      papers:n=>`📄 관련 논문·초록 ${n}건`, lpub:"논문", labs:"초록",
@@ -113,7 +114,7 @@ const I18N={
      reg:"Standard-of-care regimen (B)", A:"Experimental (A)", target:"Target", modality:"Modality",
      bio:"Biomarker (selection)", elig_sum:"Eligibility (summary)", spon:"Sponsor", start:"Start", pcd:"Primary completion (est.)",
      summary:"Study summary", elig:"Eligibility (excerpt)", trials:n=>`${n} trial${n>1?'s':''}`, scale:"R&D",
-     wln:n=>`⭐ Watchlist: ${n}`, wlview:"View watchlist", wlclear:"Clear",
+     wln:n=>`⭐ Watchlist: ${n}`, wlview:"View watchlist", wlall:"Select all", wlclear:"Clear",
      csv:"Download CSV", xlsx:"Download Excel",
      wlhead:n=>`⭐ Watchlist — ${n} trial${n>1?'s':''}`,
      papers:n=>`📄 Publications & abstracts (${n})`, lpub:"Paper", labs:"Abstract",
@@ -178,6 +179,10 @@ function clearWatch(){if(!WATCH.size)return;WATCH.clear();saveWatch();updateWatc
   if(view.type==='watch')showWatch();
   else document.querySelectorAll('#cards .card').forEach(c=>{c.classList.remove('wl');
     const b=c.querySelector('.star');if(b){b.classList.remove('on');b.textContent='☆';}});}
+function addAllWatch(){TRIALS.forEach(t=>WATCH.add(t.nct));saveWatch();updateWatchMap();syncWatchUI();
+  if(view.type==='watch')showWatch();
+  else document.querySelectorAll('#cards .card').forEach(c=>{c.classList.add('wl');
+    const b=c.querySelector('.star');if(b){b.classList.add('on');b.textContent='★';}});}
 
 const EXCOLS=[["nct","NCT"],["title","Title"],["phase","Phase"],["status","Status"],["cluster","Cluster"],
   ["B","StandardOfCare_B"],["A","Experimental_A"],["regimen","Regimen"],["add","Regimen_add"],
@@ -232,6 +237,7 @@ function applyLang(l){lang=l;T=I18N[l];localStorage.setItem('lang',l);
   document.getElementById('reset').textContent=T.reset;
   document.getElementById('cl_head').textContent=T.clusters;
   document.getElementById('wlView').textContent=T.wlview;
+  document.getElementById('wlAll').textContent=T.wlall;
   document.getElementById('wlClear').textContent=T.wlclear;
   document.getElementById('exCsv').textContent=T.csv;
   document.getElementById('exXlsx').textContent=T.xlsx;
@@ -246,6 +252,7 @@ document.getElementById('cards').addEventListener('click',e=>{const b=e.target.c
 document.getElementById('cards').addEventListener('contextmenu',e=>{const c=e.target.closest('.card');if(!c)return;
   e.preventDefault();toggleWatch(c.dataset.nct);});
 document.getElementById('wlView').addEventListener('click',showWatch);
+document.getElementById('wlAll').addEventListener('click',addAllWatch);
 document.getElementById('wlClear').addEventListener('click',clearWatch);
 document.getElementById('exCsv').addEventListener('click',exportCSV);
 document.getElementById('exXlsx').addEventListener('click',exportXLSX);
